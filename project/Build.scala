@@ -10,7 +10,7 @@ object ApplicationBuild extends Build {
 	val sbtIdeaRepo		= "sbt-idea-repo" at "http://mpeltonen.github.com/maven/"
 
     val appDependencies = Seq(
-      // Add your project dependencies here,
+      "org.neo4j" % "neo4j" % "1.7.M01"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

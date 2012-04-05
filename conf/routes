@@ -5,5 +5,17 @@
 # Home page
 GET     /                           controllers.Application.index
 
+GET     /admin                      controllers.Application.admin
+
+# Roles
+GET     /admin/roles                controllers.Application.roles
+POST    /admin/roles                controllers.Application.newRole
+POST    /admin/roles/:id/delete     controllers.Application.deleteRole(id: Long)
+
+# Users
+GET     /admin/users                controllers.Application.users
+POST    /admin/users                controllers.Application.newUser
+POST    /admin/users/:id/delete     controllers.Application.deleteUser(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
