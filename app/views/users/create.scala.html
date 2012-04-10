@@ -1,0 +1,53 @@
+@(newUserForm: Form[User])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Admin Home") {
+
+    <h1>Admin Home</h1>
+
+    @helper.form(action = routes.Users.submit) {
+        <fieldset>
+            <legend>User Details</legend>
+
+            @inputText(
+            newUserForm("username"),
+            '_label -> "Username",
+            '_help -> "Please enter a username.",
+            '_error -> newUserForm.globalError
+            )
+
+            @inputText(
+            newUserForm("email"), '_label -> "Email",
+            '_help -> "Enter a valid email address."
+            )
+
+            @inputPassword(
+            newUserForm("password.main"),
+            '_label -> "Password",
+            '_help -> "A password must be at least 6 characters. "
+            )
+
+            @inputPassword(
+            newUserForm("password.confirm"),
+            '_label -> "Repeat password",
+            '_help -> "Please repeat your password again.",
+            '_error -> newUserForm.error("password")
+            )
+        </fieldset>
+        <fieldset>
+
+            @checkbox(
+            newUserForm("accept"),
+            '_label -> None, '_text -> "You agree the Terms and conditions",
+            '_showConstraints -> false
+            )
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Sign Up">
+            <a href="@routes.Users.index" class="btn">Cancel</a>
+        </div>
+    }
+}

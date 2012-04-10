@@ -1,0 +1,610 @@
+2012-04-10 09:17:49.224+0000: Creating new db @ /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore
+2012-04-10 09:17:49.374+0000: Opened [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1] clean empty log, version=0, lastTxId=1
+2012-04-10 09:17:49.379+0000: TM new log: tm_tx_log.1
+2012-04-10 09:17:49.490+0000: Opened [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1] clean empty log, version=0, lastTxId=1
+2012-04-10 09:17:49.493+0000: --- STARTUP diagnostics START ---
+2012-04-10 09:17:49.495+0000: Neo4j Kernel properties:
+    store_dir=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb
+    use_memory_mapped_buffers=true
+    neostore.propertystore.db.index.keys.mapped_memory=1M
+    logical_log=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log
+    neostore.propertystore.db.strings.mapped_memory=79M
+    neostore.propertystore.db.arrays.mapped_memory=90M
+    neo_store=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore
+    neostore.relationshipstore.db.mapped_memory=114M
+    node_auto_indexing=false
+    neostore.propertystore.db.index.mapped_memory=1M
+    neostore.propertystore.db.mapped_memory=93M
+    relationship_auto_indexing=false
+    neostore.nodestore.db.mapped_memory=25M
+2012-04-10 09:17:49.499+0000: Diagnostics providers:
+    org.neo4j.kernel.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+2012-04-10 09:17:49.500+0000: System memory information:
+    Total Physical memory: 4.00 GB
+    Free Physical memory: 217.04 MB
+    Committed virtual memory: 4.49 GB
+    Total swap space: 128.00 MB
+    Free swap space: 112.63 MB
+2012-04-10 09:17:49.520+0000: JVM memory information:
+    Free  memory: 364.01 MB
+    Total memory: 509.94 MB
+    Max   memory: 1.49 GB
+    Garbage Collector: ParNew: [Par Eden Space, Par Survivor Space]
+    Garbage Collector: ConcurrentMarkSweep: [Par Eden Space, Par Survivor Space, CMS Old Gen, CMS Perm Gen]
+    Memory Pool: Code Cache (Non-heap memory): committed=8.32 MB, used=7.58 MB, max=48.00 MB, threshold=0.00 B
+    Memory Pool: Par Eden Space (Heap memory): committed=16.63 MB, used=16.61 MB, max=66.56 MB, threshold=?
+    Memory Pool: Par Survivor Space (Heap memory): committed=2.06 MB, used=1.60 MB, max=8.31 MB, threshold=?
+    Memory Pool: CMS Old Gen (Heap memory): committed=491.25 MB, used=127.76 MB, max=1.42 GB, threshold=0.00 B
+    Memory Pool: CMS Perm Gen (Non-heap memory): committed=120.27 MB, used=84.79 MB, max=384.00 MB, threshold=0.00 B
+2012-04-10 09:17:49.557+0000: Operating system information:
+    Operating System: Mac OS X; version: 10.7.3; arch: x86_64; cpus: 4
+    Max number of file descriptors: 10240
+    Number of open file descriptors: 229
+    Process id: 4753@ndidialaneme.local
+    Byte order: LITTLE_ENDIAN
+2012-04-10 09:17:49.566+0000: JVM information:
+    VM Name: Java HotSpot(TM) 64-Bit Server VM
+    VM Vendor: Apple Inc.
+    VM Version: 20.4-b02-402
+    JIT compiler: HotSpot 64-Bit Tiered Compilers
+    VM Arguments: [-Xms512M, -Xmx1536M, -Xss1M, -XX:+CMSClassUnloadingEnabled, -XX:MaxPermSize=384M, -Dfile.encoding=UTF8, -Dplay.version=2.0, -Dsbt.ivy.home=/Users/ndidialaneme/Tools/play-2.0/framework/../repository, -Dplay.home=/Users/ndidialaneme/Tools/play-2.0/framework, -Dsbt.boot.properties=/Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt.boot.properties]
+2012-04-10 09:17:49.568+0000: Java classpath:
+     [classpath + loader.5] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt-launch.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.google.code.findbugs/jsr305/1.3.9/jars/jsr305.jar
+     [loader.1] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.h2database/h2/1.3.158/jars/h2.jar
+     [loader.6] file:/System/Library/Java/Extensions/dns_sd.jar
+     [bootstrap] /System/Library/Frameworks/JavaVM.framework/Versions/A/Frameworks/JavaRuntimeSupport.framework/Versions/A/Resources/Java/JavaRuntimeSupport.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/tyrex/tyrex/1.0.1/jars/tyrex.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.jsuereth.scala-arm/scala-arm_2.9.1/0.3/jars/scala-arm_2.9.1.jar
+     [loader.6] file:/System/Library/Java/Extensions/MRJToolkit.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.joda/joda-convert/1.1/jars/joda-convert.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-cypher/jars/neo4j-cypher-1.7.M01.jar
+     [loader.6] file:/System/Library/Java/Extensions/vecmath.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.codehaus.jackson/jackson-core-asl/1.9.5/jars/jackson-core-asl.jar
+     [loader.6] file:/System/Library/Java/Extensions/libmlib_jai.jnilib
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.scala-incubator.io/scala-io-file_2.9.1/0.2.0/jars/scala-io-file_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-lucene-index/jars/neo4j-lucene-index-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-jmx/jars/neo4j-jmx-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/slf4j-api/1.6.4/jars/slf4j-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.google.guava/guava/10.0.1/jars/guava.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/dnsns.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.codahale/jerkson_2.9.1/0.5.0/jars/jerkson_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-core/3.0.7.RELEASE/jars/spring-core.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3D.jnilib
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-compiler.jar
+     [loader.6] file:/System/Library/Java/Extensions/mlibwrapper_jai.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/jansi.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/localedata.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.typesafe.akka/akka-slf4j/2.0/jars/akka-slf4j.jar
+     [loader.6] file:/System/Library/Java/Extensions/QTJava.zip
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/ch.qos.logback/logback-core/1.0.0/jars/logback-core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.codehaus.jackson/jackson-mapper-asl/1.9.5/jars/jackson-mapper-asl.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/templates_2.9.1/2.0/jars/templates_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.hibernate.javax.persistence/hibernate-jpa-2.0-api/1.0.1.Final/jars/hibernate-jpa-2.0-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-beans/3.0.7.RELEASE/jars/spring-beans.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3DAudio.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/libAppleScriptEngine.jnilib
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar
+     [loader.6] file:/System/Library/Java/Extensions/j3daudio.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/anorm_2.9.1/2.0/jars/anorm_2.9.1.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3DUtils.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/libQTJNative.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/j3dcore.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/commons-codec/commons-codec/1.3/jars/commons-codec.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/jline.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/jul-to-slf4j/1.6.4/jars/jul-to-slf4j.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-graph-matching/jars/neo4j-graph-matching-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.validation/validation-api/1.0.0.GA/jars/validation-api.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/ch.qos.logback/logback-classic/1.0.0/jars/logback-classic.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.ning/async-http-client/1.7.0/jars/async-http-client.jar
+     [loader.6] file:/System/Library/Java/Extensions/j3dutils.jar
+     [loader.6] file:/System/Library/Java/Extensions/jai_core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.servlet/javax.servlet-api/3.0.1/jars/javax.servlet-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.transaction/jta/1.1/jars/jta.jar
+     [loader.6] file:/System/Library/Java/Extensions/jai_codec.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/net.sf.ehcache/ehcache-core/2.5.0/jars/ehcache-core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.avaje/ebean/2.7.3/jars/ebean.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/oauth.signpost/signpost-core/1.2.1.1/jars/signpost-core.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/sunjce_provider.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/jaxen/jaxen/1.1.3/jars/jaxen.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-graph-algo/jars/neo4j-graph-algo-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/commons-lang/commons-lang/2.6/jars/commons-lang.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.yaml/snakeyaml/1.9/bundles/snakeyaml.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j/jars/neo4j-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javassist/javassist/3.12.1.GA/jars/javassist.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-context/3.0.7.RELEASE/jars/spring-context.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.scala-tools/scala-stm_2.9.1/0.4/jars/scala-stm_2.9.1.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/jce.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.hibernate/hibernate-validator/4.2.0.Final/jars/hibernate-validator.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-kernel/jars/neo4j-kernel-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.scala-incubator.io/scala-io-core_2.9.1/0.2.0/jars/scala-io-core_2.9.1.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/jcl-over-slf4j/1.6.4/jars/jcl-over-slf4j.jar
+     [loader.6] file:/System/Library/Java/Extensions/AppleScriptEngine.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.reflections/reflections/0.9.6/jars/reflections.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/joda-time/joda-time/2.0/jars/joda-time.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/apple_provider.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/io.netty/netty/3.3.0.Final/bundles/netty.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-udc/jars/neo4j-udc-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.apache.geronimo.specs/geronimo-jta_1.1_spec/jars/geronimo-jta_1.1_spec-1.1.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.typesafe.akka/akka-actor/2.0/jars/akka-actor.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/sunpkcs11.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.apache.lucene/lucene-core/jars/lucene-core-3.5.0.jar
+     [loader.3] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/other/net.java.dev.jna/jna/3.2.3/jna-3.2.3.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.jolbox/bonecp/0.7.1.RELEASE/bundles/bonecp.jar
+2012-04-10 09:17:49.573+0000: Library path:
+    /Users/ndidialaneme/Sandbox/UserManagement
+    /Library/Java/Extensions
+    /System/Library/Java/Extensions
+    /usr/lib/java
+2012-04-10 09:17:49.620+0000: System.properties:
+    sbt.ivy.home = /Users/ndidialaneme/Tools/play-2.0/framework/../repository
+    sun.boot.library.path = /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries
+    awt.nativeDoubleBuffering = true
+    gopherProxySet = false
+    mrj.build = 11D50d
+    path.separator = :
+    file.encoding.pkg = sun.io
+    sun.java.launcher = SUN_STANDARD
+    user.country = US
+    sun.os.patch.level = unknown
+    user.dir = /Users/ndidialaneme/Sandbox/UserManagement
+    sbt.boot.properties = /Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt.boot.properties
+    sun.jnu.encoding = MacRoman
+    play.home = /Users/ndidialaneme/Tools/play-2.0/framework
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    user.home = /Users/ndidialaneme
+    user.timezone = Europe/London
+    file.encoding = UTF8
+    user.name = ndidialaneme
+    play.version = 2.0
+    sun.java.command = /Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt-launch.jar play
+    sun.arch.data.model = 64
+    user.language = en
+    awt.toolkit = apple.awt.CToolkit
+    file.separator = /
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.cpu.endian = little
+    mrj.version = 1070.1.6.0_29-402
+    socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    sun.cpu.isalist = 
+2012-04-10 09:17:49.620+0000: --- STARTUP diagnostics END ---
+2012-04-10 09:17:49.633+0000: Extension org.neo4j.kernel.KernelExtension[kernel udc] loaded ok
+2012-04-10 09:17:49.730+0000: Extension org.neo4j.kernel.KernelExtension[kernel jmx] loaded ok
+2012-04-10 09:17:49.733+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions START ---
+2012-04-10 09:17:49.733+0000: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1334049469225, id:5508517953467441406, store version: 13561656364791302]
+2012-04-10 09:17:49.733+0000: Kernel version: Neo4j - Graph Database Kernel 1.7.M01
+2012-04-10 09:17:49.733+0000: Neo4j component versions:
+2012-04-10 09:17:49.733+0000:   Neo4j - Graph Database Kernel 1.7.M01
+2012-04-10 09:17:49.734+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions END ---
+2012-04-10 09:17:49.736+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS START ---
+2012-04-10 09:17:49.737+0000: Store versions:
+    Store versions:
+      NeoStore v0.A.0
+      NodeStore v0.A.0
+      RelationshipStore v0.A.0
+      RelationshipTypeStore v0.A.0
+      PropertyStore v0.A.0
+      PropertyIndexStore v0.A.0
+      StringPropertyStore v0.A.0
+      ArrayPropertyStore v0.A.0
+2012-04-10 09:17:49.737+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS END ---
+2012-04-10 09:17:49.738+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE START ---
+2012-04-10 09:17:49.738+0000: Id usage:
+    Id usage:
+      NodeStore: used=1 high=0
+      RelationshipStore: used=0 high=-1
+      RelationshipTypeStore: used=0 high=-1
+      PropertyStore: used=0 high=-1
+      PropertyIndexStore: used=0 high=-1
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+2012-04-10 09:17:49.738+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE END ---
+2012-04-10 09:17:49.738+0000: --- STARTUP diagnostics for KernelDiagnostics:StoreFiles START ---
+2012-04-10 09:17:49.738+0000: Storage files:
+    active_tx_log: 11.00 B
+    index:
+      lucene-store.db: 40.00 B
+      lucene.log.1: 16.00 B
+      lucene.log.active: 4.00 B
+    - Total: 60.00 B
+    lock: 0.00 B
+    messages.log: 17.26 kB
+    neostore: 54.00 B
+    neostore.id: 9.00 B
+    neostore.nodestore.db: 9.00 B
+    neostore.nodestore.db.id: 9.00 B
+    neostore.propertystore.db: 0.00 B
+    neostore.propertystore.db.arrays: 128.00 B
+    neostore.propertystore.db.arrays.id: 9.00 B
+    neostore.propertystore.db.id: 9.00 B
+    neostore.propertystore.db.index: 0.00 B
+    neostore.propertystore.db.index.id: 9.00 B
+    neostore.propertystore.db.index.keys: 38.00 B
+    neostore.propertystore.db.index.keys.id: 9.00 B
+    neostore.propertystore.db.strings: 128.00 B
+    neostore.propertystore.db.strings.id: 9.00 B
+    neostore.relationshipstore.db: 0.00 B
+    neostore.relationshipstore.db.id: 9.00 B
+    neostore.relationshiptypestore.db: 0.00 B
+    neostore.relationshiptypestore.db.id: 9.00 B
+    neostore.relationshiptypestore.db.names: 38.00 B
+    neostore.relationshiptypestore.db.names.id: 9.00 B
+    nioneo_logical.log.1: 16.00 B
+    nioneo_logical.log.active: 4.00 B
+    tm_tx_log.1: 0.00 B
+2012-04-10 10:55:34.765+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.relationshiptypestore.db.names non clean shutdown detected
+2012-04-10 10:55:34.792+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.relationshiptypestore.db non clean shutdown detected
+2012-04-10 10:55:34.793+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.strings non clean shutdown detected
+2012-04-10 10:55:34.794+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.index.keys non clean shutdown detected
+2012-04-10 10:55:34.803+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.index non clean shutdown detected
+2012-04-10 10:55:34.833+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.arrays non clean shutdown detected
+2012-04-10 10:55:34.847+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db non clean shutdown detected
+2012-04-10 10:55:34.852+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.relationshipstore.db non clean shutdown detected
+2012-04-10 10:55:34.857+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.nodestore.db non clean shutdown detected
+2012-04-10 10:55:34.859+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore non clean shutdown detected
+2012-04-10 10:55:34.872+0000: Non clean shutdown detected on log [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1]. Recovery started ...
+2012-04-10 10:55:34.876+0000: [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1] logVersion=0 with committed tx=1
+2012-04-10 10:55:34.902+0000: [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1] entries found=77 lastEntryPos=3148
+2012-04-10 10:55:34.903+0000: Internal recovery completed, scanned 77 log entries. Recovered 10 transactions. Last tx recovered: 11
+2012-04-10 10:55:34.903+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log] sorting 1 xids
+2012-04-10 10:55:34.904+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log] checkRecoveryComplete 0 xids
+2012-04-10 10:55:34.907+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.relationshiptypestore.db.names rebuild id generator, highId=3 defragged count=0
+2012-04-10 10:55:34.911+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.index.keys rebuild id generator, highId=2 defragged count=0
+2012-04-10 10:55:34.940+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.index rebuild id generator, highId=1 defragged count=0
+2012-04-10 10:55:34.945+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.strings rebuild id generator, highId=1 defragged count=0
+2012-04-10 10:55:34.947+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db.arrays rebuild id generator, highId=1 defragged count=0
+2012-04-10 10:55:35.255+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.propertystore.db rebuild id generator, highId=7 defragged count=0
+2012-04-10 10:55:35.521+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.relationshipstore.db rebuild id generator, highId=8 defragged count=0
+2012-04-10 10:55:35.540+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore.nodestore.db rebuild id generator, highId=9 defragged count=0
+2012-04-10 10:55:35.545+0000: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore rebuild id generator, highId=6 defragged count=0
+2012-04-10 10:55:35.546+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log] recovery completed.
+2012-04-10 10:55:35.546+0000: Recovery on log [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1] completed.
+2012-04-10 10:55:35.551+0000: TM opening log: /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/tm_tx_log.1
+2012-04-10 10:55:35.658+0000: Non clean shutdown detected on log [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1]. Recovery started ...
+2012-04-10 10:55:35.659+0000: [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1] logVersion=0 with committed tx=1
+2012-04-10 10:55:35.956+0000: [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1] entries found=38 lastEntryPos=1251
+2012-04-10 10:55:35.957+0000: Internal recovery completed, scanned 38 log entries. Recovered 8 transactions. Last tx recovered: 9
+2012-04-10 10:55:35.957+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log] sorting 1 xids
+2012-04-10 10:55:35.957+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log] checkRecoveryComplete 0 xids
+2012-04-10 10:55:35.957+0000: XaResourceManager[/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log] recovery completed.
+2012-04-10 10:55:35.957+0000: Recovery on log [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1] completed.
+2012-04-10 10:55:35.978+0000: --- STARTUP diagnostics START ---
+2012-04-10 10:55:35.979+0000: Neo4j Kernel properties:
+    store_dir=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb
+    use_memory_mapped_buffers=true
+    neostore.propertystore.db.index.keys.mapped_memory=1M
+    logical_log=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log
+    neostore.propertystore.db.strings.mapped_memory=79M
+    neostore.propertystore.db.arrays.mapped_memory=90M
+    neo_store=/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/neostore
+    neostore.relationshipstore.db.mapped_memory=114M
+    node_auto_indexing=false
+    neostore.propertystore.db.index.mapped_memory=1M
+    neostore.propertystore.db.mapped_memory=93M
+    relationship_auto_indexing=false
+    neostore.nodestore.db.mapped_memory=25M
+2012-04-10 10:55:35.988+0000: Diagnostics providers:
+    org.neo4j.kernel.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+2012-04-10 10:55:35.989+0000: System memory information:
+    Total Physical memory: 4.00 GB
+    Free Physical memory: 329.31 MB
+    Committed virtual memory: 4.49 GB
+    Total swap space: 256.00 MB
+    Free swap space: 195.59 MB
+2012-04-10 10:55:35.996+0000: JVM memory information:
+    Free  memory: 344.36 MB
+    Total memory: 509.94 MB
+    Max   memory: 1.49 GB
+    Garbage Collector: ParNew: [Par Eden Space, Par Survivor Space]
+    Garbage Collector: ConcurrentMarkSweep: [Par Eden Space, Par Survivor Space, CMS Old Gen, CMS Perm Gen]
+    Memory Pool: Code Cache (Non-heap memory): committed=7.82 MB, used=7.68 MB, max=48.00 MB, threshold=0.00 B
+    Memory Pool: Par Eden Space (Heap memory): committed=16.63 MB, used=4.72 MB, max=66.56 MB, threshold=?
+    Memory Pool: Par Survivor Space (Heap memory): committed=2.06 MB, used=1.06 MB, max=8.31 MB, threshold=?
+    Memory Pool: CMS Old Gen (Heap memory): committed=491.25 MB, used=159.96 MB, max=1.42 GB, threshold=0.00 B
+    Memory Pool: CMS Perm Gen (Non-heap memory): committed=109.31 MB, used=87.05 MB, max=384.00 MB, threshold=0.00 B
+2012-04-10 10:55:36.010+0000: Operating system information:
+    Operating System: Mac OS X; version: 10.7.3; arch: x86_64; cpus: 4
+    Max number of file descriptors: 10240
+    Number of open file descriptors: 268
+    Process id: 6747@ndidialaneme.local
+    Byte order: LITTLE_ENDIAN
+2012-04-10 10:55:36.014+0000: JVM information:
+    VM Name: Java HotSpot(TM) 64-Bit Server VM
+    VM Vendor: Apple Inc.
+    VM Version: 20.4-b02-402
+    JIT compiler: HotSpot 64-Bit Tiered Compilers
+    VM Arguments: [-Xms512M, -Xmx1536M, -Xss1M, -XX:+CMSClassUnloadingEnabled, -XX:MaxPermSize=384M, -Dfile.encoding=UTF8, -Dplay.version=2.0, -Dsbt.ivy.home=/Users/ndidialaneme/Tools/play-2.0/framework/../repository, -Dplay.home=/Users/ndidialaneme/Tools/play-2.0/framework, -Dsbt.boot.properties=/Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt.boot.properties]
+2012-04-10 10:55:36.015+0000: Java classpath:
+     [classpath + loader.5] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt-launch.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.google.code.findbugs/jsr305/1.3.9/jars/jsr305.jar
+     [loader.1] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.h2database/h2/1.3.158/jars/h2.jar
+     [loader.6] file:/System/Library/Java/Extensions/dns_sd.jar
+     [bootstrap] /System/Library/Frameworks/JavaVM.framework/Versions/A/Frameworks/JavaRuntimeSupport.framework/Versions/A/Resources/Java/JavaRuntimeSupport.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/tyrex/tyrex/1.0.1/jars/tyrex.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.jsuereth.scala-arm/scala-arm_2.9.1/0.3/jars/scala-arm_2.9.1.jar
+     [loader.6] file:/System/Library/Java/Extensions/MRJToolkit.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.joda/joda-convert/1.1/jars/joda-convert.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-cypher/jars/neo4j-cypher-1.7.M01.jar
+     [loader.6] file:/System/Library/Java/Extensions/vecmath.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.codehaus.jackson/jackson-core-asl/1.9.5/jars/jackson-core-asl.jar
+     [loader.6] file:/System/Library/Java/Extensions/libmlib_jai.jnilib
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.scala-incubator.io/scala-io-file_2.9.1/0.2.0/jars/scala-io-file_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-lucene-index/jars/neo4j-lucene-index-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-jmx/jars/neo4j-jmx-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/slf4j-api/1.6.4/jars/slf4j-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.google.guava/guava/10.0.1/jars/guava.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/dnsns.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.codahale/jerkson_2.9.1/0.5.0/jars/jerkson_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-core/3.0.7.RELEASE/jars/spring-core.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3D.jnilib
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-compiler.jar
+     [loader.6] file:/System/Library/Java/Extensions/mlibwrapper_jai.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/jansi.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/localedata.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.typesafe.akka/akka-slf4j/2.0/jars/akka-slf4j.jar
+     [loader.6] file:/System/Library/Java/Extensions/QTJava.zip
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/ch.qos.logback/logback-core/1.0.0/jars/logback-core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.codehaus.jackson/jackson-mapper-asl/1.9.5/jars/jackson-mapper-asl.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/templates_2.9.1/2.0/jars/templates_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.hibernate.javax.persistence/hibernate-jpa-2.0-api/1.0.1.Final/jars/hibernate-jpa-2.0-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-beans/3.0.7.RELEASE/jars/spring-beans.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3DAudio.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/libAppleScriptEngine.jnilib
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar
+     [loader.6] file:/System/Library/Java/Extensions/j3daudio.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/anorm_2.9.1/2.0/jars/anorm_2.9.1.jar
+     [loader.6] file:/System/Library/Java/Extensions/libJ3DUtils.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/libQTJNative.jnilib
+     [loader.6] file:/System/Library/Java/Extensions/j3dcore.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/commons-codec/commons-codec/1.3/jars/commons-codec.jar
+     [loader.2] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/jline.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/jul-to-slf4j/1.6.4/jars/jul-to-slf4j.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-graph-matching/jars/neo4j-graph-matching-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.validation/validation-api/1.0.0.GA/jars/validation-api.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/ch.qos.logback/logback-classic/1.0.0/jars/logback-classic.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.ning/async-http-client/1.7.0/jars/async-http-client.jar
+     [loader.6] file:/System/Library/Java/Extensions/j3dutils.jar
+     [loader.6] file:/System/Library/Java/Extensions/jai_core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.servlet/javax.servlet-api/3.0.1/jars/javax.servlet-api.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javax.transaction/jta/1.1/jars/jta.jar
+     [loader.6] file:/System/Library/Java/Extensions/jai_codec.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/net.sf.ehcache/ehcache-core/2.5.0/jars/ehcache-core.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.avaje/ebean/2.7.3/jars/ebean.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/oauth.signpost/signpost-core/1.2.1.1/jars/signpost-core.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/sunjce_provider.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/jaxen/jaxen/1.1.3/jars/jaxen.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-graph-algo/jars/neo4j-graph-algo-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/commons-lang/commons-lang/2.6/jars/commons-lang.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.yaml/snakeyaml/1.9/bundles/snakeyaml.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j/jars/neo4j-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/javassist/javassist/3.12.1.GA/jars/javassist.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.springframework/spring-context/3.0.7.RELEASE/jars/spring-context.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.scala-tools/scala-stm_2.9.1/0.4/jars/scala-stm_2.9.1.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/jce.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.hibernate/hibernate-validator/4.2.0.Final/jars/hibernate-validator.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-kernel/jars/neo4j-kernel-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/repository/local/com.github.scala-incubator.io/scala-io-core_2.9.1/0.2.0/jars/scala-io-core_2.9.1.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.slf4j/jcl-over-slf4j/1.6.4/jars/jcl-over-slf4j.jar
+     [loader.6] file:/System/Library/Java/Extensions/AppleScriptEngine.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/org.reflections/reflections/0.9.6/jars/reflections.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/joda-time/joda-time/2.0/jars/joda-time.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/apple_provider.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/io.netty/netty/3.3.0.Final/bundles/netty.jar
+     [bootstrap] /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.neo4j/neo4j-udc/jars/neo4j-udc-1.7.M01.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.apache.geronimo.specs/geronimo-jta_1.1_spec/jars/geronimo-jta_1.1_spec-1.1.1.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.typesafe.akka/akka-actor/2.0/jars/akka-actor.jar
+     [loader.6] file:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext/sunpkcs11.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/cache/org.apache.lucene/lucene-core/jars/lucene-core-3.5.0.jar
+     [loader.3] file:/Users/ndidialaneme/Tools/play-2.0/framework/sbt/boot/other/net.java.dev.jna/jna/3.2.3/jna-3.2.3.jar
+     [loader.0] file:/Users/ndidialaneme/Tools/play-2.0/framework/../repository/local/com.jolbox/bonecp/0.7.1.RELEASE/bundles/bonecp.jar
+2012-04-10 10:55:36.021+0000: Library path:
+    /Users/ndidialaneme/Sandbox/UserManagement
+    /Library/Java/Extensions
+    /System/Library/Java/Extensions
+    /usr/lib/java
+2012-04-10 10:55:36.021+0000: System.properties:
+    sbt.ivy.home = /Users/ndidialaneme/Tools/play-2.0/framework/../repository
+    sun.boot.library.path = /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries
+    awt.nativeDoubleBuffering = true
+    gopherProxySet = false
+    mrj.build = 11D50d
+    path.separator = :
+    file.encoding.pkg = sun.io
+    sun.java.launcher = SUN_STANDARD
+    user.country = US
+    sun.os.patch.level = unknown
+    user.dir = /Users/ndidialaneme/Sandbox/UserManagement
+    sbt.boot.properties = /Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt.boot.properties
+    sun.jnu.encoding = MacRoman
+    play.home = /Users/ndidialaneme/Tools/play-2.0/framework
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    user.home = /Users/ndidialaneme
+    user.timezone = Europe/London
+    file.encoding = UTF8
+    user.name = ndidialaneme
+    play.version = 2.0
+    sun.java.command = /Users/ndidialaneme/Tools/play-2.0/framework/sbt/sbt-launch.jar play
+    sun.arch.data.model = 64
+    user.language = en
+    awt.toolkit = apple.awt.CToolkit
+    file.separator = /
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.cpu.endian = little
+    mrj.version = 1070.1.6.0_29-402
+    socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    sun.cpu.isalist = 
+2012-04-10 10:55:36.022+0000: --- STARTUP diagnostics END ---
+2012-04-10 10:55:36.024+0000: TM non resolved transactions found in /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/tm_tx_log.1
+2012-04-10 10:55:36.061+0000: Rotating [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.1] @ version=0 to /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/index/lucene.log.2 from position 1256
+2012-04-10 10:55:36.062+0000: Rotate: old log scanned, newLog @ pos=16
+2012-04-10 10:55:36.064+0000: Log rotated, newLog @ pos=16, version 1 and last tx 9
+2012-04-10 10:55:36.064+0000: Rotating [/Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.1] @ version=0 to /Users/ndidialaneme/Sandbox/UserManagement/var/graphDb/nioneo_logical.log.2 from position 3153
+2012-04-10 10:55:36.065+0000: Rotate: old log scanned, newLog @ pos=16
+2012-04-10 10:55:36.067+0000: Log rotated, newLog @ pos=16, version 1 and last tx 11
+2012-04-10 10:55:36.067+0000: Recovery completed, all transactions have been resolved to a consistent state.
+2012-04-10 10:55:36.109+0000: Extension org.neo4j.kernel.KernelExtension[kernel udc] loaded ok
+2012-04-10 10:55:36.166+0000: Extension org.neo4j.kernel.KernelExtension[kernel jmx] loaded ok
+2012-04-10 10:55:36.169+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions START ---
+2012-04-10 10:55:36.169+0000: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1334049469225, id:5508517953467441406, store version: 13561656364791302]
+2012-04-10 10:55:36.169+0000: Kernel version: Neo4j - Graph Database Kernel 1.7.M01
+2012-04-10 10:55:36.169+0000: Neo4j component versions:
+2012-04-10 10:55:36.170+0000:   Neo4j - Graph Database Kernel 1.7.M01
+2012-04-10 10:55:36.170+0000: --- STARTUP diagnostics for KernelDiagnostics:Versions END ---
+2012-04-10 10:55:36.173+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS START ---
+2012-04-10 10:55:36.173+0000: Store versions:
+    Store versions:
+      NeoStore v0.A.0
+      NodeStore v0.A.0
+      RelationshipStore v0.A.0
+      RelationshipTypeStore v0.A.0
+      PropertyStore v0.A.0
+      PropertyIndexStore v0.A.0
+      StringPropertyStore v0.A.0
+      ArrayPropertyStore v0.A.0
+2012-04-10 10:55:36.173+0000: --- STARTUP diagnostics for NEO_STORE_VERSIONS END ---
+2012-04-10 10:55:36.173+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE START ---
+2012-04-10 10:55:36.173+0000: Id usage:
+    Id usage:
+      NodeStore: used=9 high=8
+      RelationshipStore: used=8 high=7
+      RelationshipTypeStore: used=2 high=1
+      PropertyStore: used=7 high=6
+      PropertyIndexStore: used=1 high=0
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+2012-04-10 10:55:36.174+0000: --- STARTUP diagnostics for NEO_STORE_ID_USAGE END ---
+2012-04-10 10:55:36.174+0000: --- STARTUP diagnostics for KernelDiagnostics:StoreFiles START ---
+2012-04-10 10:55:36.174+0000: Storage files:
+    active_tx_log: 11.00 B
+    index:
+      lucene:
+        node:
+          nodes:
+            _0.fdt: 17.00 B
+            _0.fdx: 12.00 B
+            _0.fnm: 18.00 B
+            _0.frq: 2.00 B
+            _0.nrm: 6.00 B
+            _0.prx: 2.00 B
+            _0.tii: 35.00 B
+            _0.tis: 42.00 B
+            _1.fdt: 15.00 B
+            _1.fdx: 12.00 B
+            _1.fnm: 18.00 B
+            _1.frq: 2.00 B
+            _1.nrm: 6.00 B
+            _1.prx: 2.00 B
+            _1.tii: 35.00 B
+            _1.tis: 40.00 B
+            _2.fdt: 15.00 B
+            _2.fdx: 12.00 B
+            _2.fnm: 18.00 B
+            _2.frq: 2.00 B
+            _2.nrm: 6.00 B
+            _2.prx: 2.00 B
+            _2.tii: 35.00 B
+            _2.tis: 40.00 B
+            _3.fdt: 16.00 B
+            _3.fdx: 12.00 B
+            _3.fnm: 18.00 B
+            _3.frq: 2.00 B
+            _3.nrm: 6.00 B
+            _3.prx: 2.00 B
+            _3.tii: 35.00 B
+            _3.tis: 41.00 B
+            _4.fdt: 18.00 B
+            _4.fdx: 12.00 B
+            _4.fnm: 18.00 B
+            _4.frq: 2.00 B
+            _4.nrm: 6.00 B
+            _4.prx: 2.00 B
+            _4.tii: 35.00 B
+            _4.tis: 43.00 B
+            _5.fdt: 18.00 B
+            _5.fdx: 12.00 B
+            _5.fnm: 18.00 B
+            _5.frq: 2.00 B
+            _5.nrm: 6.00 B
+            _5.prx: 2.00 B
+            _5.tii: 35.00 B
+            _5.tis: 43.00 B
+            _6.fdt: 19.00 B
+            _6.fdx: 12.00 B
+            _6.fnm: 18.00 B
+            _6.frq: 2.00 B
+            _6.nrm: 6.00 B
+            _6.prx: 2.00 B
+            _6.tii: 35.00 B
+            _6.tis: 44.00 B
+            segments.gen: 20.00 B
+            segments_1: 1.41 kB
+            write.lock: 0.00 B
+          - Total: 2.34 kB
+        - Total: 2.34 kB
+      - Total: 2.34 kB
+      lucene-store.db: 40.00 B
+      lucene.log.2: 16.00 B
+      lucene.log.active: 4.00 B
+    - Total: 2.40 kB
+    index.db: 103.00 B
+    lock: 0.00 B
+    messages.log: 41.55 kB
+    neostore: 54.00 B
+    neostore.id: 9.00 B
+    neostore.nodestore.db: 25.59 kB
+    neostore.nodestore.db.id: 9.00 B
+    neostore.propertystore.db: 952.29 kB
+    neostore.propertystore.db.arrays: 128.00 B
+    neostore.propertystore.db.arrays.id: 9.00 B
+    neostore.propertystore.db.id: 9.00 B
+    neostore.propertystore.db.index: 10.24 kB
+    neostore.propertystore.db.index.id: 9.00 B
+    neostore.propertystore.db.index.keys: 1.00 kB
+    neostore.propertystore.db.index.keys.id: 9.00 B
+    neostore.propertystore.db.strings: 128.00 B
+    neostore.propertystore.db.strings.id: 9.00 B
+    neostore.relationshipstore.db: 1.14 MB
+    neostore.relationshipstore.db.id: 9.00 B
+    neostore.relationshiptypestore.db: 10.00 B
+    neostore.relationshiptypestore.db.id: 9.00 B
+    neostore.relationshiptypestore.db.names: 114.00 B
+    neostore.relationshiptypestore.db.names.id: 9.00 B
+    nioneo_logical.log.2: 16.00 B
+    nioneo_logical.log.active: 4.00 B
+    tm_tx_log.1: 0.00 B
