@@ -26,6 +26,10 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 
   def neoRestNodeById(id: Int) = neoRestNode / id.toString
 
+  implicit def conforms: (JsValue) => JsValue = {
+    (_: JsValue) \ "data"
+  }
+
   override lazy val root: Model[_] = Http(neoRestBase <:< Map("Accept" -> "application/json") >! {
     jsValue => new Model() { val id:Int = selfRestUriToId((jsValue \ "reference_node").as[String])}
   })

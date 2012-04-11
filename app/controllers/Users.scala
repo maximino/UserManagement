@@ -43,6 +43,7 @@ object Users extends Controller {
       errors => BadRequest(html.users.create(errors)),
       (user:User)=> Ok(toJson(user.save))
     )
+    Ok(html.users.index(""))
   }
 
   def delete(id: Long) = TODO

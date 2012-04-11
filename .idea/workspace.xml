@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34e4bebc-e7be-4d4d-ab93-f1990c5e8a11" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Model.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/dispatch/ModelDispatchHttp.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/dispatch/PlayJsonDispatchHttp.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/persistance/GraphService.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/persistance/graph.scala" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/RelTypes.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/UserRepository.scala" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Global.scala" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Users.scala" afterPath="$PROJECT_DIR$/app/controllers/Users.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/User.scala" afterPath="$PROJECT_DIR$/app/models/User.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/index.scala.html" afterPath="$PROJECT_DIR$/app/views/users/index.scala.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/Build.scala" afterPath="$PROJECT_DIR$/project/Build.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usermanagement.iml" afterPath="$PROJECT_DIR$/usermanagement.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala" afterPath="$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/index.scala.html" afterPath="$PROJECT_DIR$/app/views/index.scala.html" />
     </list>
     <ignored path="UserManagement.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,25 +67,7 @@
       <file leaf-file-name="Users.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Users.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="37" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.scala" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/User.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="94" selection-start="43" selection-end="43" vertical-scroll-proportion="0.04090909">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Model.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="39" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+            <state line="15" column="14" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,25 +76,48 @@
       <file leaf-file-name="Neo4jRestService.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="59" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0">
+            <state line="45" column="125" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#21#53#0" expanded="false" />
+                <element signature="e#242#265#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Global.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Global.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="5" selection-start="180" selection-end="180" vertical-scroll-proportion="0.20454545">
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admin.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayJsonDispatchHttp.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/utils/dispatch/PlayJsonDispatchHttp.scala">
+      <file leaf-file-name="index.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/index.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="95" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
+            <state line="9" column="120" selection-start="125" selection-end="125" vertical-scroll-proportion="-6.75">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelDispatchHttp.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/utils/dispatch/ModelDispatchHttp.scala">
+      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="37" selection-start="254" selection-end="276" vertical-scroll-proportion="-9.692307">
+            <state line="12" column="15" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,9 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/user.scala.html" />
-        <option value="$PROJECT_DIR$/app/views/users/create.html" />
-        <option value="$PROJECT_DIR$/app/controllers/Application.scala" />
         <option value="$PROJECT_DIR$/app/views/users/home.scala.html" />
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/views/users/create.scala.html" />
@@ -153,10 +146,13 @@
         <option value="$PROJECT_DIR$/app/utils/dispatch/ModelDispatchHttp.scala" />
         <option value="$PROJECT_DIR$/app/utils/persistance/GraphService.scala" />
         <option value="$PROJECT_DIR$/app/models/User.scala" />
-        <option value="$PROJECT_DIR$/app/controllers/Users.scala" />
         <option value="$PROJECT_DIR$/project/Build.scala" />
-        <option value="$PROJECT_DIR$/app/models/Model.scala" />
         <option value="$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala" />
+        <option value="$PROJECT_DIR$/app/models/Model.scala" />
+        <option value="$PROJECT_DIR$/app/Gobal.scala" />
+        <option value="$PROJECT_DIR$/app/Global.scala" />
+        <option value="$PROJECT_DIR$/app/controllers/Users.scala" />
+        <option value="$PROJECT_DIR$/app/views/index.scala.html" />
       </list>
     </option>
   </component>
@@ -267,6 +263,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -285,11 +295,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="persistance" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,82 +375,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PlayJsonDispatchHttp.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModelDispatchHttp.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserManagement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -642,7 +614,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17997544" sideWeight="0.6703418" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18427518" sideWeight="0.6703418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -709,93 +681,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/utils/persistance/graph.scala">
+    <entry file="file://$PROJECT_DIR$/app/models/User.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="114" selection-end="114" vertical-scroll-proportion="0.16363636" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils/persistance/GraphService.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.3272727" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar!/scala/collection/generic/GenMapFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="264" selection-end="264" vertical-scroll-proportion="0.085510686" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-core_2.9.1/jars/dispatch-core_2.9.1-0.8.7.jar!/dispatch/HttpExecutor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="108" selection-start="1273" selection-end="1379" vertical-scroll-proportion="0.23515439" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar!/scala/collection/immutable/Map.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.23515439" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar!/scala/Predef.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="40" selection-start="420" selection-end="420" vertical-scroll-proportion="0.17102137" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-core_2.9.1/jars/dispatch-core_2.9.1-0.8.7.jar!/dispatch/url.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="144" selection-end="144" vertical-scroll-proportion="0.042105265" />
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/alt-string.jar!/java/lang/String.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="176" column="28" selection-start="7101" selection-end="7101" vertical-scroll-proportion="0.33295456" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/Build.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="415" selection-end="416" vertical-scroll-proportion="0.24545455" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-core_2.9.1/jars/dispatch-core_2.9.1-0.8.7.jar!/dispatch/RequestVerbs.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="733" selection-end="733" vertical-scroll-proportion="0.18947369" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils/dispatch/PlayJsonDispatchHttp.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="95" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
+        <state line="11" column="15" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils/dispatch/ModelDispatchHttp.scala">
+    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar!/play/core/j/JavaGlobalSettingsAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="37" selection-start="254" selection-end="276" vertical-scroll-proportion="-9.692307">
+        <state line="3" column="15" selection-start="278" selection-end="278" vertical-scroll-proportion="0.06315789">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Tools/play-2.0/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar!/scala/Application.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="6" selection-start="57" selection-end="57" vertical-scroll-proportion="0.042105265">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar!/play/api/GlobalSettings.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="82" selection-start="229" selection-end="307" vertical-scroll-proportion="0.08421053">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Model.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="39" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+        <state line="34" column="90" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.69545454">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/utils/persistance/GraphService.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="45" selection-start="60" selection-end="60" vertical-scroll-proportion="0.061363637">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="67" selection-end="67" vertical-scroll-proportion="0.122727275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Tools/play-2.0/repository/local/play/play_2.9.1/2.0/jars/play_2.9.1.jar!/play/api/data/Forms.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="435" selection-end="442" vertical-scroll-proportion="61.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="15" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/create.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="41" selection-start="195" selection-end="195" vertical-scroll-proportion="0.21028037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="127" selection-end="127" vertical-scroll-proportion="0.14719626">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="120" selection-start="125" selection-end="125" vertical-scroll-proportion="-6.75">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Users.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="37" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="59" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0">
+        <state line="15" column="14" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.scala">
+    <entry file="file://$PROJECT_DIR$/app/utils/neo4j/Neo4jRestService.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="94" selection-start="43" selection-end="43" vertical-scroll-proportion="0.04090909">
-          <folding />
+        <state line="45" column="125" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#21#53#0" expanded="false" />
+            <element signature="e#242#265#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Global.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="180" selection-end="180" vertical-scroll-proportion="0.20454545">
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
