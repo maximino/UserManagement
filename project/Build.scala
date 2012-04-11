@@ -11,7 +11,8 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
       "org.neo4j" % "neo4j" % "1.7.M01",
-      "com.sun.jersey" % "jersey-client" % "1.12"
+      "com.sun.jersey" % "jersey-client" % "1.12",
+      "net.databinder" %% "dispatch-http" % "0.8.8" withSources
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

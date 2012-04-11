@@ -1,6 +1,7 @@
 package controllers
 
 import play.api.mvc._
+import play.api.libs.json.Json._
 import play.api.data._
 import play.api.data.Forms._
 
@@ -16,21 +17,16 @@ object Users extends Controller {
   //User
   val newUserForm: Form[User] = Form(
     mapping(
-      "username" -> text(minLength = 4),
-      "email" -> email,
-      "password" -> tuple(
-        "main" -> text(minLength = 6),
-        "confirm" -> text
-      ).verifying("Passwords don't match", passwords => passwords._1 == passwords._2),
+      "username" -> nonEmptyText,
       "accept" -> checked("You must accept the conditions")
     )
     {
       //Binding: Create User from mapping result
-      (username, email, passwords, _) => User(username, passwords._1, email)
+      (username: String, _) => User(null.asInstanceOf[Int], username)
     }
     {
       //Unbinding:Create the mapping values from an existing User value
-      user => Some(user.username, user.email, (user.password, ""), false)
+      user => Some(user.username, false)
     }.verifying("This username is not available",user => !Seq("admin", "guest").contains(user.username))
   )
 
@@ -45,7 +41,7 @@ object Users extends Controller {
   def submit = Action { implicit request =>
     newUserForm.bindFromRequest.fold(
       errors => BadRequest(html.users.create(errors)),
-      user => Ok(html.users.create(newUserForm))
+      (user:User)=> Ok(toJson(user.save))
     )
   }
 

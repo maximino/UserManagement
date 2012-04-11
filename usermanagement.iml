@@ -325,15 +325,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-codec/commons-codec/1.3/jars/commons-codec.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/com.codahale/jerkson_2.9.1/0.5.0/jars/jerkson_2.9.1.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -506,6 +497,69 @@
       <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/com.sun.jersey/jersey-client/bundles/jersey-client-1.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-http_2.9.1/jars/dispatch-http_2.9.1-0.8.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-core_2.9.1/jars/dispatch-core_2.9.1-0.8.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpclient/4.1.2/jars/httpclient.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-logging/commons-logging/1.1.1/jars/commons-logging.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-codec/commons-codec/1.4/jars/commons-codec.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-futures_2.9.1/jars/dispatch-futures_2.9.1-0.8.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -1000,6 +1054,60 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-http_2.9.1/jars/dispatch-http_2.9.1-0.8.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-core_2.9.1/jars/dispatch-core_2.9.1-0.8.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpclient/4.1.2/jars/httpclient.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-logging/commons-logging/1.1.1/jars/commons-logging.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-codec/commons-codec/1.4/jars/commons-codec.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/cache/net.databinder/dispatch-futures_2.9.1/jars/dispatch-futures_2.9.1-0.8.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/play/play-test_2.9.1/2.0/jars/play-test_2.9.1.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -1126,42 +1234,6 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpclient/4.1.2/jars/httpclient.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpcore/4.1.3/jars/httpcore.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-logging/commons-logging/1.1.1/jars/commons-logging.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/commons-codec/commons-codec/1.4/jars/commons-codec.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.commons/commons-exec/1.1/jars/commons-exec.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -1253,6 +1325,15 @@
       <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpmime/4.1.2/jars/httpmime.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Tools/play-2.0/repository/local/org.apache.httpcomponents/httpcore/4.1.3/jars/httpcore.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
