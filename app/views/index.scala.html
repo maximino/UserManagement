@@ -1,8 +1,9 @@
 @(message: String)
 
-@main("Welcome to Play 2.0") {
-    
-    <h1>Welcome to BigFish</h1>
-
+@controls = {
     <a href="admin">Admin Portal</a>
+}
+
+@main("Welcome to Play 2.0")(controls) {
+    <h1>Welcome to BigFish</h1>
 }

@@ -1,12 +1,17 @@
 @(users: List[User])
 
-@main("Admin: Users Control Panel") {
+@controls = {
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
+}
+
+@main("Admin: Users Control Panel")(controls) {
 
 <h1>Admin Home</h1>
 
     <ul>
         @users.map{ user =>
-            <li>@user.username</li>
+            <li><a href="/admin/users/@user.id">@user.username</a></li>
         }
     </ul>
     <a href="/admin/users/newUser">Create</a>

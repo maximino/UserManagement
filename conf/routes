@@ -11,6 +11,7 @@ GET     /admin                      controllers.Application.admin
 GET     /admin/users                controllers.Users.index
 GET     /admin/users/newUser        controllers.Users.create
 POST    /admin/users/newUser        controllers.Users.submit
+GET     /admin/users/:id            controllers.Users.detail(id: Long)
 POST    /admin/users/:id/delete     controllers.Users.delete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path

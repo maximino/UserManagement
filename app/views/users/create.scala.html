@@ -3,7 +3,12 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@main("Admin Home") {
+@controls = {
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
+}
+
+@main("Admin Home")(controls) {
 
     <h1>Admin Home</h1>
 

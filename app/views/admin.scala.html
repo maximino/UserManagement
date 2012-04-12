@@ -1,10 +1,10 @@
 @(message: String)
 
-@main("Admin Home") {
-
-    <h1>Admin Home</h1>
-
+@controls = {
     <a href="/admin/users">Users</a>
     <a href="/admin/roles">Roles</a>
+}
 
+@main("Admin Home")(controls) {
+    <h1>Admin Home</h1>
 }

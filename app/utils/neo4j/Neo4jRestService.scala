@@ -20,11 +20,11 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   val neoRestRel = neoRestBase / "relationship"
   val neoRestCypher = neoRestBase / "cypher"
 
-  def selfRestUriToId(uri: String) = uri.substring(uri.lastIndexOf('/') + 1).toInt
+  def selfRestUriToId(uri: String) = uri.substring(uri.lastIndexOf('/') + 1).toLong
 
   def buildUrl(u: String) = url(u)
 
-  def neoRestNodeById(id: Int) = neoRestNode / id.toString
+  def neoRestNodeById(id: Long) = neoRestNode / id.toString
 
   implicit def conforms: (JsValue) => JsValue = {
     (_: JsValue) \ "data"
@@ -45,10 +45,10 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   }
 
   override lazy val root: Model[_] = Http(neoRestBase <:< Map("Accept" -> "application/json") >! {
-    jsValue => new Model() { val id:Int = selfRestUriToId((jsValue \ "reference_node").as[String])}
+    jsValue => new Model() { val id:Long = selfRestUriToId((jsValue \ "reference_node").as[String])}
   })
 
-  def getNode[T <: Model[_]](id: Int)(implicit m: ClassManifest[T], f: Format[T]): Option[T] = {
+  def getNode[T <: Model[_]](id: Long)(implicit m: ClassManifest[T], f: Format[T]): Option[T] = {
     try {
       Http(neoRestNodeById(id) <:< Map("Accept" -> "application/json") >^> (Some(_: T)))
     } catch {
@@ -60,12 +60,12 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
 
   def saveNode[T <: Model[_]](t: T)(implicit m: ClassManifest[T], f: Format[T]): T = {
-    val (id: Int, property: String) = Http(
+    val (id: Long, property: String) = Http(
       (neoRestNode <<(stringify(toJson(t)), "application/json"))
         <:< Map("Accept" -> "application/json")
         >! {
         jsValue =>
-          val id: Int = selfRestUriToId((jsValue \ "self").as[String])
+          val id: Long = selfRestUriToId((jsValue \ "self").as[String])
           (id, (jsValue \ "property").as[String])
       }
     )

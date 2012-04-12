@@ -11,7 +11,7 @@ import reflect.ClassManifest
  */
 
 abstract class Model[A <: Model[A]] {
-  val id:Int
+  val id:Long
 
   def save(implicit m:ClassManifest[A], f:Format[A]):A = graph.saveNode[A](this.asInstanceOf[A])
 //
@@ -29,7 +29,8 @@ object Model {
   }
 
   def all[T <: Model[_]](implicit m:ClassManifest[T], f:Format[T]) = graph.allNodes[T]
-//  def one[T <: Model[_]](id:Int)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id)
+
+  def one[T <: Model[_]](id:Long)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id)
 
   def kindOf[T <: Model[_]] (implicit m:ClassManifest[T]):String = models.find(_._2.equals(m)).get._1
 }

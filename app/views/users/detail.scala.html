@@ -1,0 +1,14 @@
+@(user: User)
+
+@controls = {
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
+}
+
+@main("Details")(controls){
+    <h4>Details</h4>
+    Name: @user.username
+    Id: @user.id
+    <h4>Relationships</h4>
+    <h4>Roles</h4>
+}

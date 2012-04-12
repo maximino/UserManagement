@@ -29,7 +29,7 @@ object Users extends Controller {
   )
 
   def index = Action {
-    Ok(html.users.index(User.all))
+    Ok(html.users.index(User.getAllUsers))
   }
 
   def create = Action {
@@ -44,6 +44,11 @@ object Users extends Controller {
     Redirect("/admin/users")
   }
 
+  def detail(id: Long)= Action{
+    User.getUserById(id).map( u =>
+      Ok(views.html.users.detail(u))
+    ).getOrElse(NotFound)
+  }
   def delete(id: Long) = TODO
 
 }
