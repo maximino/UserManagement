@@ -5,16 +5,14 @@ import play.api.libs.json.Json._
 import play.api.data._
 import play.api.data.Forms._
 
-import models.User
 import views._
-
+import models._
 /**
  * ndidialaneme
  */
 
 object Users extends Controller {
 
-  //User
   val newUserForm: Form[User] = Form(
     mapping(
       "username" -> nonEmptyText,
@@ -31,7 +29,7 @@ object Users extends Controller {
   )
 
   def index = Action {
-    Ok(html.users.index(""))
+    Ok(html.users.index(User.all))
   }
 
   def create = Action {
@@ -43,7 +41,7 @@ object Users extends Controller {
       errors => BadRequest(html.users.create(errors)),
       (user:User)=> Ok(toJson(user.save))
     )
-    Ok(html.users.index(""))
+    Redirect("/admin/users")
   }
 
   def delete(id: Long) = TODO

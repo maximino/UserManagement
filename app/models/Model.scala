@@ -28,7 +28,7 @@ object Model {
     models.put(kind, m)
   }
 
-//  def all[T <: Model[_]](implicit m:ClassManifest[T], f:Format[T]) = graph.allNodes[T]
+  def all[T <: Model[_]](implicit m:ClassManifest[T], f:Format[T]) = graph.allNodes[T]
 //  def one[T <: Model[_]](id:Int)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id)
 
   def kindOf[T <: Model[_]] (implicit m:ClassManifest[T]):String = models.find(_._2.equals(m)).get._1

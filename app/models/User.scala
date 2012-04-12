@@ -1,7 +1,7 @@
 package models
 
-import play.api.libs.json._
 import reflect.ClassManifest
+import play.api.libs.json._
 
 /**
  * ndidialaneme
@@ -33,4 +33,6 @@ object User {
         Nil
       }))
   }
+
+  def all = Model.all[User]
 }

@@ -1,10 +1,14 @@
-@(message: String)
+@(users: List[User])
 
 @main("Admin: Users Control Panel") {
 
 <h1>Admin Home</h1>
 
-<a href="/admin/users/newUser">Create</a>
-
+    <ul>
+        @users.map{ user =>
+            <li>@user.username</li>
+        }
+    </ul>
+    <a href="/admin/users/newUser">Create</a>
 
 }

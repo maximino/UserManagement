@@ -30,6 +30,20 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     (_: JsValue) \ "data"
   }
 
+  implicit def defaultResultsFilter: (JsValue) => Iterable[JsValue] = {
+    jsValue: JsValue =>
+    //the first list is the global result
+    //underneath lists are composing all returnable
+    //each JsValue is then a returnable
+      (jsValue \ "data").as[List[List[JsValue]]].map {
+        l => {
+          //here only one returnable
+          val v = l.head
+          v \ "data"
+        }
+      }
+  }
+
   override lazy val root: Model[_] = Http(neoRestBase <:< Map("Accept" -> "application/json") >! {
     jsValue => new Model() { val id:Int = selfRestUriToId((jsValue \ "reference_node").as[String])}
   })
@@ -42,6 +56,8 @@ trait Neo4jRestService extends GraphService[Model[_]]{
       case x => None
     }
   }
+
+  def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
 
   def saveNode[T <: Model[_]](t: T)(implicit m: ClassManifest[T], f: Format[T]): T = {
     val (id: Int, property: String) = Http(
@@ -68,10 +84,6 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     model
   }
 
-  def linkToRoot(rel: String, end: Model[_]) {
-    createRelationship(root, rel, end)
-  }
-
   def createRelationship(start: Model[_], rel: String, end: Model[_]) {
     //retrieve the creation rel url for the kind
     val createRelationship = Http(neoRestNodeById(start.id) <:< Map("Accept" -> "application/json") >! {
@@ -91,5 +103,25 @@ trait Neo4jRestService extends GraphService[Model[_]]{
         >! {
         jsValue => //((jsValue \ "self").as[String], (jsValue \ "data").as[JsObject])
       })
+  }
+
+  def linkToRoot(rel: String, end: Model[_]) {
+    createRelationship(root, rel, end)
+  }
+
+  def relationTargets[T <: Model[_]](start: Model[_], rel: String)(implicit m: ClassManifest[T], f: Format[T]): List[T] = {
+    val cypher = """
+      start x=node({ref})
+      match x-[:{rel}]->t
+      return t
+      """
+      .replaceAllLiterally("{ref}", start.id.toString)
+      .replaceAllLiterally("{rel}", rel)
+
+    val props = JsObject(Seq(
+      "query" -> JsString(cypher),
+      "params" -> JsObject(Seq())
+    ))
+    Http(neoRestCypher <<(stringify(props), "application/json") >^*> { (_: Iterable[T]).toList })
   }
 }
