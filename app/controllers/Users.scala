@@ -51,4 +51,9 @@ object Users extends Controller {
   }
   def delete(id: Long) = TODO
 
+  def supervisor(id: Long) = Action {
+    Ok(views.html.users.supervise("Add Supervisor", User.getUserById(id).get, User.getAllUsers))
+  }
+
+//  def addSupervisor(uId: Long, sId: Long) = TODO
 }

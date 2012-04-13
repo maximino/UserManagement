@@ -1,0 +1,17 @@
+@(title: String, user: User, users: List[User])
+
+@controls = {
+<a href="/admin/users">Users</a>
+<a href="/admin/roles">Roles</a>
+}
+
+@main(title)(controls){
+    <h3>@title</h3>
+
+    Select one of the following Users to set a new supervisor for @user.username:
+    <ul>
+        @users.map{ u =>
+            <li><a href="">@u.username</a></li>
+        }
+    </ul>
+}

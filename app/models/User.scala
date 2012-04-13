@@ -2,6 +2,7 @@ package models
 
 import reflect.ClassManifest
 import play.api.libs.json._
+import utils.persistance.graph
 
 /**
  * ndidialaneme
@@ -14,9 +15,16 @@ case class User(id: Long, username: String) extends Model[User]{
 //    user.index("models", "keyword", username)
     user
   }
+
+  def addSupervisor(supervisor: User){
+    graph.createRelationship(this, User.SUPERVISES, supervisor)
+  }
 }
 
 object User {
+
+  val SUPERVISES = "SUPERVISES"
+
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue): User = User(
       (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
