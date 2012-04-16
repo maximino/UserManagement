@@ -12,7 +12,7 @@ trait GraphService[Node] {
 
   def getNode[T <: Node](id: Long)(implicit m: ClassManifest[T], f: Format[T]): Option[T]
 
-  def allNodes[T <: Node](implicit m: ClassManifest[T], f: Format[T]): List[T]
+//  def allNodes[T <: Node](implicit m: ClassManifest[T], f: Format[T]): List[T]
 
   def saveNode[T <: Node](t: T)(implicit m: ClassManifest[T], f: Format[T]): T
 

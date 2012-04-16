@@ -1,8 +1,10 @@
 package models
 
 import reflect.ClassManifest
-import play.api.libs.json._
+import utils.cypher.CypherQueries
 import utils.persistance.graph
+import play.api.libs.json._
+import models.User
 
 /**
  * ndidialaneme
@@ -42,7 +44,11 @@ object User {
       }))
   }
 
-  def getAllUsers = Model.all[User]
+  def getAllUsers (implicit m:ClassManifest[User], f:Format[User])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[User]))
+
+  def getAllButThisUser (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
+    graph.relationTargets(CypherQueries.match1Where1(graph.root, graph.getNode(id).get, Model.kindOf[User]))
+  }
 
   def getUserById(id: Long) = Model.one[User](id)
 }

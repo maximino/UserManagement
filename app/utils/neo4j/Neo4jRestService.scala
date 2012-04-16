@@ -57,7 +57,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     }
   }
 
-  def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
+//  def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
 
   def saveNode[T <: Model[_]](t: T)(implicit m: ClassManifest[T], f: Format[T]): T = {
     val (id: Long, property: String) = Http(
@@ -109,14 +109,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     createRelationship(root, rel, end)
   }
 
-  def relationTargets[T <: Model[_]](start: Model[_], rel: String)(implicit m: ClassManifest[T], f: Format[T]): List[T] = {
-    val cypher = """
-      start x=node({ref})
-      match x-[:{rel}]->t
-      return t
-      """
-      .replaceAllLiterally("{ref}", start.id.toString)
-      .replaceAllLiterally("{rel}", rel)
+  def relationTargets[T <: Model[_]](cypher: String)(implicit m: ClassManifest[T], f: Format[T]): List[T] = {
 
     val props = JsObject(Seq(
       "query" -> JsString(cypher),
