@@ -17,8 +17,8 @@
             <legend>User Details</legend>
 
             @inputText(
-            newUserForm("username"),
-            '_label -> "Username",
+            newUserForm("name"),
+            '_label -> "Name",
             '_help -> "Please enter a username.",
             '_error -> newUserForm.globalError
             )
@@ -51,7 +51,7 @@
         </fieldset>
 
         <div class="actions">
-            <input type="submit" class="btn primary" value="Sign Up">
+            <input type="submit" class="btn primary" value="Create">
             <a href="@routes.Users.index" class="btn">Cancel</a>
         </div>
     }

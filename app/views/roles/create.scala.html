@@ -1,0 +1,32 @@
+@(newRoleForm: Form[Role])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@controls = {
+<a href="/admin/users">Users</a>
+<a href="/admin/roles">Roles</a>
+}
+
+@main("Admin Home")(controls) {
+
+    <h1>Admin Home</h1>
+
+    @helper.form(action = routes.Roles.submit) {
+        <fieldset>
+            <legend>Role Details</legend>
+
+            @inputText(
+            newRoleForm("name"),
+            '_label -> "Name",
+            '_help -> "Please enter a name for this role.",
+            '_error -> newRoleForm.globalError
+            )
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Create">
+            <a href="@routes.Roles.index" class="btn">Cancel</a>
+        </div>
+    }
+}

@@ -1,0 +1,19 @@
+@(roles: List[Role])
+
+@controls = {
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
+}
+
+@main("Admin: Role Control Panel")(controls) {
+
+<h1>Admin Home</h1>
+
+    <ul>
+        @roles.map{ role =>
+            <li><a href="/admin/roles/@role.id">@role.name</a></li>
+        }
+    </ul>
+    <a href="/admin/roles/newRole">Create</a>
+
+}

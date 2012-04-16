@@ -13,21 +13,6 @@ import models._
 
 object Users extends Controller {
 
-  val newUserForm: Form[User] = Form(
-    mapping(
-      "username" -> nonEmptyText,
-      "accept" -> checked("You must accept the conditions")
-    )
-    {
-      //Binding: Create User from mapping result
-      (username: String, _) => User(null.asInstanceOf[Int], username)
-    }
-    {
-      //Unbinding:Create the mapping values from an existing User value
-      user => Some(user.username, false)
-    }.verifying("This username is not available",user => !Seq("admin", "guest").contains(user.username))
-  )
-
   def index = Action {
     Ok(html.users.index(User.getAllUsers))
   }
@@ -49,6 +34,7 @@ object Users extends Controller {
       Ok(views.html.users.detail(u))
     ).getOrElse(NotFound)
   }
+
   def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
@@ -56,4 +42,19 @@ object Users extends Controller {
   }
 
 //  def addSupervisor(uId: Long, sId: Long) = TODO
+  val newUserForm: Form[User] = Form(
+    mapping(
+      "name" -> nonEmptyText,
+      "accept" -> checked("You must accept the conditions")
+    )
+    {
+      //Binding: Create User from mapping result
+      (name: String, _) => User(null.asInstanceOf[Int], name)
+    }
+    {
+     //Unbinding:Create the mapping values from an existing User value
+      user => Some(user.name, false)
+    }
+    .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
+  )
 }

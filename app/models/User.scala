@@ -4,18 +4,15 @@ import reflect.ClassManifest
 import utils.cypher.CypherQueries
 import utils.persistance.graph
 import play.api.libs.json._
-import models.User
 
 /**
  * ndidialaneme
  */
 
-case class User(id: Long, username: String) extends Model[User]{
+case class User(id: Long, name: String) extends Model[User]{
 
   override def save(implicit m: ClassManifest[User], f:Format[User]):User = {
-    val user = super.save
-//    user.index("models", "keyword", username)
-    user
+    super.save
   }
 
   def addSupervisor(supervisor: User){
@@ -30,13 +27,13 @@ object User {
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue): User = User(
       (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
-      (json \ "username").as[String]
+      (json \ "name").as[String]
     )
 
     def writes(u: User): JsValue =
       JsObject(List(
         "_class_" -> JsString(User.getClass.getName),
-        "username" -> JsString(u.username)
+        "name" -> JsString(u.name)
       ) ::: (if (u.id != null.asInstanceOf[Long]) {
         List("id" -> JsNumber(u.id))
       } else {

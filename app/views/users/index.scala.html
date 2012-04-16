@@ -11,7 +11,7 @@
 
     <ul>
         @users.map{ user =>
-            <li><a href="/admin/users/@user.id">@user.username</a></li>
+            <li><a href="/admin/users/@user.id">@user.name</a></li>
         }
     </ul>
     <a href="/admin/users/newUser">Create</a>
