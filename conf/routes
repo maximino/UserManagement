@@ -12,7 +12,8 @@ GET     /admin/users                                        controllers.Users.in
 GET     /admin/users/newUser                                controllers.Users.create
 POST    /admin/users/newUser                                controllers.Users.submit
 GET     /admin/users/:id                                    controllers.Users.detail(id: Long)
-#POST    /admin/users/:id/delete                            controllers.Users.delete(id: Long)
+
+GET     /admin/users/:id/addRole                            controllers.Users.roles(id: Long)
 
 GET     /admin/users/:id/supervisors                        controllers.Users.supervisor(id: Long)
 #POST    /admin/users/:uId/supervisors/addSupervisor/:sId    controllers.Users.addSupervisor(uId: Long, sId: Long)

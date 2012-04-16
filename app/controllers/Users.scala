@@ -29,6 +29,8 @@ object Users extends Controller {
     Redirect("/admin/users")
   }
 
+  def roles(id: Long) = TODO
+
   def detail(id: Long)= Action{
     User.getUserById(id).map( u =>
       Ok(views.html.users.detail(u))
