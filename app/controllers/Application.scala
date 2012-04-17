@@ -14,8 +14,4 @@ object Application extends Controller {
     Ok(html.admin(""))
   }
 
-  def roles = TODO
-  def newRole = TODO
-  def deleteRole(id: Long) = TODO
-
 }

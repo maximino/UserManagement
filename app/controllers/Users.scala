@@ -18,11 +18,11 @@ object Users extends Controller {
   }
 
   def create = Action {
-    Ok(html.users.create(newUserForm));
+    Ok(html.users.create(userForm));
   }
 
   def submit = Action { implicit request =>
-    newUserForm.bindFromRequest.fold(
+    userForm.bindFromRequest.fold(
       errors => BadRequest(html.users.create(errors)),
       (user:User)=> Ok(toJson(user.save))
     )
@@ -40,23 +40,50 @@ object Users extends Controller {
   def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
-    Ok(views.html.users.supervise("Add Supervisor", User.getUserById(id).get, User.getAllButThisUser(id)))
+    Ok(views.html.users.supervise("Add Supervisor", User.getUserById(id).get, User.getAllButThisUser(id), newSupervisorForm))
   }
 
-//  def addSupervisor(uId: Long, sId: Long) = TODO
-  val newUserForm: Form[User] = Form(
+  def superviseSubmit(id: Long) = Action { implicit request =>
+    newSupervisorForm.bindFromRequest.fold(
+      errors => BadRequest,
+      (users:List[User])=> {
+        User.getUserById(id) map ( u =>
+          users foreach( u.addSupervisor(_) )
+        )
+        Ok("Cool")
+      }
+    )
+  }
+
+  //  def addSupervisor(uId: Long, sId: Long) = TODO
+  val userForm: Form[User] = Form(
     mapping(
-      "name" -> nonEmptyText,
-      "accept" -> checked("You must accept the conditions")
+      "name" -> nonEmptyText
     )
     {
       //Binding: Create User from mapping result
-      (name: String, _) => User(null.asInstanceOf[Int], name)
+      (name: String) => User(null.asInstanceOf[Int], name)
     }
     {
      //Unbinding:Create the mapping values from an existing User value
-      user => Some(user.name, false)
+      user => Some(user.name)
     }
     .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
+  )
+
+  val newSupervisorForm = Form(
+    mapping(
+      "supervises" -> list[Long](longNumber)
+    )(
+      (l: List[Long]) => (l.view) map {
+        Model.one[User](_)
+      } filter(_.isDefined) map {
+        _.get
+      } toList
+    )(
+      (l: List[User]) => Some(l map {
+        _.id
+      })
+    )
   )
 }

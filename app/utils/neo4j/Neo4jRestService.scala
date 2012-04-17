@@ -14,6 +14,9 @@ import utils.dispatch.ModelDispatchHttp._
 
 trait Neo4jRestService extends GraphService[Model[_]]{
 
+  //To get a feel for Dispatch, look here: http://dispatch.databinder.net/Dispatch.html
+  //And here: http://www.flotsam.nl/dispatch-periodic-table.html
+
   val neoRest = :/("localhost", 7474)
   val neoRestBase = neoRest / "db" / "data"
   val neoRestNode = neoRestBase / "node"
@@ -60,6 +63,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 //  def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
 
   def saveNode[T <: Model[_]](t: T)(implicit m: ClassManifest[T], f: Format[T]): T = {
+
     val (id: Long, property: String) = Http(
       (neoRestNode <<(stringify(toJson(t)), "application/json"))
         <:< Map("Accept" -> "application/json")
@@ -85,18 +89,26 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   }
 
   def createRelationship(start: Model[_], rel: String, end: Model[_]) {
-    //retrieve the creation rel url for the kind
+    /* The request we need to create looks line this:
+     *   1 POST http://localhost:7474/db/data/node/61/relationships
+     *   2 Accept: application/json
+     *   3 Content-Type: application/json
+     *   4 {"to" : "http://localhost:7474/db/data/node/60", "type" : "LOVES"}
+     * Lines 1 and 4 are key
+     */
+
+    //Here we get line 1
     val createRelationship = Http(neoRestNodeById(start.id) <:< Map("Accept" -> "application/json") >! {
       jsValue => (jsValue \ "create_relationship").as[String]
     })
 
-    //create the relationship 'rel' to the created node
-    //the payload
+    //Here we generate line 4
     val props = JsObject(Seq(
       "to" -> JsString(neoRestNodeById(end.id).path),
       "type" -> JsString(rel)
     ))
-    //the request
+
+    //And here we finally send the request
     Http(
       (buildUrl(createRelationship) <<(stringify(props), "application/json"))
         <:< Map("Accept" -> "application/json")

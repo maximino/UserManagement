@@ -1,4 +1,4 @@
-@(newUserForm: Form[User])
+@(userForm: Form[User])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -17,34 +17,34 @@
             <legend>User Details</legend>
 
             @inputText(
-            newUserForm("name"),
+            userForm("name"),
             '_label -> "Name",
             '_help -> "Please enter a username.",
-            '_error -> newUserForm.globalError
+            '_error -> userForm.globalError
             )
 
             @inputText(
-            newUserForm("email"), '_label -> "Email",
+            userForm("email"), '_label -> "Email",
             '_help -> "Enter a valid email address."
             )
 
             @inputPassword(
-            newUserForm("password.main"),
+            userForm("password.main"),
             '_label -> "Password",
             '_help -> "A password must be at least 6 characters. "
             )
 
             @inputPassword(
-            newUserForm("password.confirm"),
+            userForm("password.confirm"),
             '_label -> "Repeat password",
             '_help -> "Please repeat your password again.",
-            '_error -> newUserForm.error("password")
+            '_error -> userForm.error("password")
             )
         </fieldset>
         <fieldset>
 
             @checkbox(
-            newUserForm("accept"),
+            userForm("accept"),
             '_label -> None, '_text -> "You agree the Terms and conditions",
             '_showConstraints -> false
             )
