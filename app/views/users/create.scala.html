@@ -22,32 +22,6 @@
             '_help -> "Please enter a username.",
             '_error -> userForm.globalError
             )
-
-            @inputText(
-            userForm("email"), '_label -> "Email",
-            '_help -> "Enter a valid email address."
-            )
-
-            @inputPassword(
-            userForm("password.main"),
-            '_label -> "Password",
-            '_help -> "A password must be at least 6 characters. "
-            )
-
-            @inputPassword(
-            userForm("password.confirm"),
-            '_label -> "Repeat password",
-            '_help -> "Please repeat your password again.",
-            '_error -> userForm.error("password")
-            )
-        </fieldset>
-        <fieldset>
-
-            @checkbox(
-            userForm("accept"),
-            '_label -> None, '_text -> "You agree the Terms and conditions",
-            '_showConstraints -> false
-            )
         </fieldset>
 
         <div class="actions">

@@ -82,7 +82,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 
     val model = getNode[T](id).get
 
-    //create the rel for the kind
+    //create the relationship for the kindOf
     linkToRoot(Model.kindOf[T], model)
 
     model

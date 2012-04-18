@@ -15,8 +15,8 @@ GET     /admin/users/:id                                    controllers.Users.de
 
 GET     /admin/users/:id/addRole                            controllers.Users.roles(id: Long)
 
-GET     /admin/users/:id/supervisors                        controllers.Users.supervisor(id: Long)
-POST    /admin/users/:id/supervisors                        controllers.Users.superviseSubmit(id: Long)
+GET     /admin/users/:id/supervisees                        controllers.Users.supervisor(id: Long)
+POST    /admin/users/:id/supervisees                        controllers.Users.superviseSubmit(id: Long)
 #POST    /admin/users/:uId/supervisors/addSupervisor/:sId    controllers.Users.addSupervisor(uId: Long, sId: Long)
 
 # Roles

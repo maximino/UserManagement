@@ -15,8 +15,8 @@ case class User(id: Long, name: String) extends Model[User]{
     super.save
   }
 
-  def addSupervisor(supervisor: User){
-    graph.createRelationship(this, User.SUPERVISES, supervisor)
+  def addSupervisee(supervisee: User){
+    graph.createRelationship(this, User.SUPERVISES, supervisee)
   }
 }
 

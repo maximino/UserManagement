@@ -18,11 +18,11 @@ object Users extends Controller {
   }
 
   def create = Action {
-    Ok(html.users.create(userForm));
+    Ok(html.users.create(userByNameForm));
   }
 
   def submit = Action { implicit request =>
-    userForm.bindFromRequest.fold(
+    userByNameForm.bindFromRequest.fold(
       errors => BadRequest(html.users.create(errors)),
       (user:User)=> Ok(toJson(user.save))
     )
@@ -40,23 +40,20 @@ object Users extends Controller {
   def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
-    Ok(views.html.users.supervise("Add Supervisor", User.getUserById(id).get, User.getAllButThisUser(id), newSupervisorForm))
+    Ok(views.html.users.supervise("Add Supervisee", User.getUserById(id).get, User.getAllButThisUser(id), newByIdForm))
   }
 
   def superviseSubmit(id: Long) = Action { implicit request =>
-    newSupervisorForm.bindFromRequest.fold(
-      errors => BadRequest,
-      (users:List[User])=> {
-        User.getUserById(id) map ( u =>
-          users foreach( u.addSupervisor(_) )
-        )
-        Ok("Cool")
+    newByIdForm.bindFromRequest.fold(
+      errors => BadRequest("Whoops"),
+      user => {
+        User.getUserById(id).get.addSupervisee(user)
+        Ok
       }
     )
   }
 
-  //  def addSupervisor(uId: Long, sId: Long) = TODO
-  val userForm: Form[User] = Form(
+  val userByNameForm: Form[User] = Form(
     mapping(
       "name" -> nonEmptyText
     )
@@ -71,19 +68,41 @@ object Users extends Controller {
     .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
   )
 
-  val newSupervisorForm = Form(
+  val newByIdForm: Form[User] = Form(
     mapping(
-      "supervises" -> list[Long](longNumber)
-    )(
-      (l: List[Long]) => (l.view) map {
-        Model.one[User](_)
-      } filter(_.isDefined) map {
-        _.get
-      } toList
-    )(
-      (l: List[User]) => Some(l map {
-        _.id
-      })
-    )
+      "id" -> longNumber
+    ){
+      (id) => User.getUserById(id).get
+    }{
+      (user) => Some(user.id)
+    }
   )
+// Need to figure out how to bid lists properly
+//  def superviseSubmit(id: Long) = Action { implicit request =>
+//    newSupervisorForm.bindFromRequest.fold(
+//      errors => BadRequest,
+//      (users:List[User])=> {
+//        User.getUserById(id) map ( u =>
+//          users foreach( u.addSupervisor(_) )
+//        )
+//        Ok("Cool")
+//      }
+//    )
+//  }
+
+//  val newSupervisorForm = Form(
+//    mapping(
+//      "supervises" -> list[Long](longNumber)
+//    )(
+//      (l: List[Long]) => (l.view) map {
+//        Model.one[User](_)
+//      } filter(_.isDefined) map {
+//        _.get
+//      } toList
+//    )(
+//      (l: List[User]) => Some(l map {
+//        _.id
+//      })
+//    )
+//  )
 }

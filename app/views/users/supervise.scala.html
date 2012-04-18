@@ -1,4 +1,4 @@
-@(title: String, user: User, users: List[User], userForm: Form[List[User]])
+@(title: String, user: User, users: List[User], userForm: Form[User])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -11,15 +11,16 @@
 @main(title)(controls){
     <h3>@title</h3>
 
-    Select one of the following Users to set a new supervisor for @user.name:
+    Select one of the following Users to set a new Supervisee for @user.name:
     @helper.form(action = routes.Users.superviseSubmit(user.id)) {
         <fieldset>
             @inputRadioGroup(
-                userForm("supervises"),
+                userForm("id"),
                 options(
                     users map { user => (user.id.toString.asInstanceOf[String] , user.name)} toMap
                 ),
-                '_label -> None
+                '_label -> None,
+                '_error -> userForm.globalError
             )
         </fieldset>
 
