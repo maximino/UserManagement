@@ -15,8 +15,9 @@ case class User(id: Long, name: String) extends Model[User]{
     super.save
   }
 
-  def addSupervisee(supervisee: User){
+  def addSupervisee(supervisee: User): User = {
     graph.createRelationship(this, User.SUPERVISES, supervisee)
+    this
   }
 }
 
@@ -43,8 +44,8 @@ object User {
 
   def getAllUsers (implicit m:ClassManifest[User], f:Format[User])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[User]))
 
-  def getAllButThisUser (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
-    graph.relationTargets(CypherQueries.match1Where1(graph.root, graph.getNode(id).get, Model.kindOf[User]))
+  def getAllButThisUserAndSuperviseRels (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
+    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
   }
 
   def getUserById(id: Long) = Model.one[User](id)

@@ -20,7 +20,9 @@
                     users map { user => (user.id.toString.asInstanceOf[String] , user.name)} toMap
                 ),
                 '_label -> None,
-                '_error -> userForm.globalError
+                '_error -> userForm.globalError,
+                '_showConstraints -> false
+
             )
         </fieldset>
 

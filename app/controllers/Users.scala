@@ -40,28 +40,23 @@ object Users extends Controller {
   def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
-    Ok(views.html.users.supervise("Add Supervisee", User.getUserById(id).get, User.getAllButThisUser(id), newByIdForm))
+    Ok(views.html.users.supervise("Add Supervisee", User.getUserById(id).get, User.getAllButThisUserAndSuperviseRels(id), newByIdForm))
   }
 
   def superviseSubmit(id: Long) = Action { implicit request =>
     newByIdForm.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
-      user => {
-        User.getUserById(id).get.addSupervisee(user)
-        Ok
-      }
+      user => Ok(html.users.detail(User.getUserById(id).get.addSupervisee(user)))
     )
   }
 
   val userByNameForm: Form[User] = Form(
     mapping(
       "name" -> nonEmptyText
-    )
-    {
+    ){
       //Binding: Create User from mapping result
       (name: String) => User(null.asInstanceOf[Int], name)
-    }
-    {
+    }{
      //Unbinding:Create the mapping values from an existing User value
       user => Some(user.name)
     }
@@ -77,7 +72,7 @@ object Users extends Controller {
       (user) => Some(user.id)
     }
   )
-// Need to figure out how to bid lists properly
+// Need to figure out how to bind lists properly
 //  def superviseSubmit(id: Long) = Action { implicit request =>
 //    newSupervisorForm.bindFromRequest.fold(
 //      errors => BadRequest,
