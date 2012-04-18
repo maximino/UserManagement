@@ -1,0 +1,14 @@
+@(title: String, user: User, roles: List[Role], roleForm: Form[Role])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@controls = {
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
+}
+
+@main(title)(controls){
+    <h3>@title</h3>
+
+}

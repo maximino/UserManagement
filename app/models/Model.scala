@@ -4,6 +4,7 @@ import play.api.libs.json.Format
 import utils.persistance.graph
 import scala.collection.mutable
 import reflect.ClassManifest
+import play.api.data.Form
 
 
 /**
@@ -30,7 +31,7 @@ object Model {
 
 //  def all[T <: Model[_]](implicit m:ClassManifest[T], f:Format[T]) = graph.allNodes[T]
 
-  def one[T <: Model[_]](id:Long)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id)
+  def one[T <: Model[_]](id:Long)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id).get
 
   def kindOf[T <: Model[_]] (implicit m:ClassManifest[T]):String = models.find(_._2.equals(m)).get._1
 }

@@ -25,28 +25,34 @@ object User {
 
   val SUPERVISES = "SUPERVISES"
 
+  def getUserById(id: Long) = Model.one[User](id)
+
+  def getAllUsers (implicit m:ClassManifest[User], f:Format[User])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[User]))
+
+  def getAllUsersButThisUserAndSuperviseRelationships (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
+    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
+  }
+
+  //def getAllButCurrentRoles(id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
+   // graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
+  //}
+
+
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue): User = User(
-      (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
-      (json \ "name").as[String]
+    (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
+    (json \ "name").as[String]
     )
 
     def writes(u: User): JsValue =
-      JsObject(List(
-        "_class_" -> JsString(User.getClass.getName),
-        "name" -> JsString(u.name)
-      ) ::: (if (u.id != null.asInstanceOf[Long]) {
+    JsObject(List(
+    "_class_" -> JsString(User.getClass.getName),
+    "name" -> JsString(u.name)
+    ) ::: (if (u.id != null.asInstanceOf[Long]) {
         List("id" -> JsNumber(u.id))
       } else {
         Nil
       }))
   }
 
-  def getAllUsers (implicit m:ClassManifest[User], f:Format[User])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[User]))
-
-  def getAllButThisUserAndSuperviseRels (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
-    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
-  }
-
-  def getUserById(id: Long) = Model.one[User](id)
 }

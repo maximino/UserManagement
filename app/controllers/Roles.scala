@@ -29,11 +29,9 @@ object Roles extends Controller {
     Redirect("/admin/roles")
   }
 
-  def detail(id: Long)= Action{
-    Role.getRoleById(id).map( r =>
-      Ok(views.html.roles.detail(r))
-    ).getOrElse(NotFound)
-  }
+  def detail(id: Long)= TODO /*Action{
+	Ok(views.html.roles.detail(Role.getRoleById(id)))
+  }*/
 
 
   val newRoleForm: Form[Role] = Form(

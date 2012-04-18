@@ -29,24 +29,30 @@ object Users extends Controller {
     Redirect("/admin/users")
   }
 
-  def roles(id: Long) = TODO
+  def roles(id: Long) = TODO //Action {
+ //   Ok(html.users.roles("Add Roles", User.getUserById(id), User.getAllButCurrentRoles(id), newRoleForm))
+  //}
 
   def detail(id: Long)= Action{
-    User.getUserById(id).map( u =>
-      Ok(views.html.users.detail(u))
-    ).getOrElse(NotFound)
+    Ok(html.users.detail(User.getUserById(id)))
   }
+
+//  def detail(id: Long)= Action{
+//    User.getUserById(id).map( u =>
+//      Ok(views.html.users.detail(u))
+//    ).getOrElse(NotFound)
+//  }
 
   def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
-    Ok(views.html.users.supervise("Add Supervisee", User.getUserById(id).get, User.getAllButThisUserAndSuperviseRels(id), newByIdForm))
+    Ok(html.users.supervise("Add Supervisee", User.getUserById(id), User.getAllUsersButThisUserAndSuperviseRelationships(id), newByIdForm))
   }
 
   def superviseSubmit(id: Long) = Action { implicit request =>
     newByIdForm.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
-      user => Ok(html.users.detail(User.getUserById(id).get.addSupervisee(user)))
+      user => Ok(html.users.detail(User.getUserById(id).addSupervisee(user)))
     )
   }
 
@@ -67,37 +73,21 @@ object Users extends Controller {
     mapping(
       "id" -> longNumber
     ){
-      (id) => User.getUserById(id).get
+      (id) => User.getUserById(id)
     }{
       (user) => Some(user.id)
     }
   )
-// Need to figure out how to bind lists properly
-//  def superviseSubmit(id: Long) = Action { implicit request =>
-//    newSupervisorForm.bindFromRequest.fold(
-//      errors => BadRequest,
-//      (users:List[User])=> {
-//        User.getUserById(id) map ( u =>
-//          users foreach( u.addSupervisor(_) )
-//        )
-//        Ok("Cool")
-//      }
-//    )
-//  }
 
-//  val newSupervisorForm = Form(
-//    mapping(
-//      "supervises" -> list[Long](longNumber)
-//    )(
-//      (l: List[Long]) => (l.view) map {
-//        Model.one[User](_)
-//      } filter(_.isDefined) map {
-//        _.get
-//      } toList
-//    )(
-//      (l: List[User]) => Some(l map {
-//        _.id
-//      })
-//    )
-//  )
+  val newRoleForm: Form[Role] = Form(
+    mapping(
+      "id" -> longNumber
+    ){
+      (id) => Model.one[Role](id)
+    }{
+      (role) => Some(role.id)
+    }
+  )
+
+
 }
