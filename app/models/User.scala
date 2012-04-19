@@ -11,7 +11,7 @@ import play.api.libs.json._
 case class User(id: Long, name: String) extends Model[User]{
 
   def save[T <: Model[_]](implicit f:Format[User]):User = {
-    super.save(this, Relationships.USER, User.REF_NODE)
+    super.save(this, Relationships.USER, RefNode.userRefNode)
   }
 
   def addSupervisee(supervisee: User): User = {
@@ -26,8 +26,6 @@ case class User(id: Long, name: String) extends Model[User]{
 }
 
 object User {
-
-  val REF_NODE: RefNode = null
 
   def getUserById(id: Long)(implicit f:Format[User])= Model.one[User](id)
 

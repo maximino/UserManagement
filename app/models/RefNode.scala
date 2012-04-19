@@ -2,6 +2,7 @@ package models
 
 import play.api.libs.json._
 import utils.persistance.graph
+import utils.cypher.CypherQueries
 
 /**
  * ndidialaneme
@@ -14,6 +15,12 @@ case class RefNode(id: Long, name: String) extends Model[RefNode]{
 }
 
 object RefNode{
+
+  def userRefNode(implicit f:Format[RefNode]) = {
+    val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "USERS_REFERENCE"))
+    list(1)
+  }
+
   implicit object RefNodeFormat extends Format[RefNode] {
     def reads(json: JsValue): RefNode = RefNode(
       (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
