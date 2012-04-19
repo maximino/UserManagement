@@ -54,7 +54,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     }
   })
 
-  def getNode[T <: Model[_]](id: Long)(implicit m: ClassManifest[T], f: Format[T]): Option[T] = {
+  def getNode[T <: Model[_]](id: Long)(implicit f: Format[T]): Option[T] = {
     try {
       Http(neoRestNodeById(id) <:< Map("Accept" -> "application/json") >^> (Some(_: T)))
     } catch {
@@ -63,9 +63,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     }
   }
 
-//  def allNodes[T <: Model[_]](implicit m: ClassManifest[T], f: Format[T]): List[T] = relationTargets(root, Model.kindOf[T])
-
-  def saveNode[T <: Model[_]](t: T)(implicit m: ClassManifest[T], f: Format[T]): T = {
+  def saveNode[T <: Model[_]](t: T)(implicit f: Format[T]): T = {
 
     val (id: Long, property: String) = Http(
       (neoRestNode <<(stringify(toJson(t)), "application/json"))
@@ -86,7 +84,8 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     val model = getNode[T](id).get
 
     //create the relationship for the kindOf
-    linkToRoot(Model.kindOf[T], model)
+    //TODO-Ndidi Incorrectly set to Relationships.USER node
+    linkToRoot(Relationships.USER, model)
 
     model
   }
@@ -124,7 +123,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     createRelationship(root, rel, end)
   }
 
-  def relationTargets[T <: Model[_]](cypher: String)(implicit m: ClassManifest[T], f: Format[T]): List[T] = {
+  def relationTargets[T <: Model[_]](cypher: String)(implicit f: Format[T]): List[T] = {
 
     val props = JsObject(Seq(
       "query" -> JsString(cypher),

@@ -1,6 +1,5 @@
 package models
 
-import reflect.ClassManifest
 import utils.cypher.CypherQueries
 import utils.persistance.graph
 import play.api.libs.json._
@@ -11,18 +10,18 @@ import play.api.libs.json._
 
 case class Role(id: Long, name: String) extends Model[Role]{
 
-  override def save(implicit m: ClassManifest[Role], f:Format[Role]):Role = {
+  override def save(implicit f:Format[Role]):Role = {
     super.save
   }
 }
 
 object Role{
-  def getRoleById(id: Long) = Model.one[Role](id)
+  def getRoleById(id: Long)(implicit f:Format[Role]) = Model.one[Role](id)
 
-  def getAllRoles (implicit m:ClassManifest[Role], f:Format[Role])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[Role]))
+  def getAllRoles(implicit f:Format[Role])= graph.relationTargets(CypherQueries.match1(graph.root, Relationships.USER))
 
-  def getAllButCurrentRolesForUser(id: Long)(implicit m:ClassManifest[Role], f:Format[Role]): List[Role]= {
-    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[Role], Relationships.HAS_ROLE))
+  def getAllButCurrentRolesForUser(id: Long)(implicit f:Format[Role]): List[Role]= {
+    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Relationships.USER, Relationships.HAS_ROLE))
   }
 
   implicit object RoleFormat extends Format[Role] {
