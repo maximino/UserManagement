@@ -61,7 +61,7 @@ object Users extends Controller {
       "name" -> nonEmptyText
     ){
       //Binding: Create User from mapping result
-      (name: String) => User(null.asInstanceOf[Int], name)
+      (name: String) => User(null.asInstanceOf[Long], name)
     }{
      //Unbinding:Create the mapping values from an existing User value
       user => Some(user.name)
