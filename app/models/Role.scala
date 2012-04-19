@@ -21,6 +21,10 @@ object Role{
 
   def getAllRoles (implicit m:ClassManifest[Role], f:Format[Role])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[Role]))
 
+  def getAllButCurrentRolesForUser(id: Long)(implicit m:ClassManifest[Role], f:Format[Role]): List[Role]= {
+    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[Role], Relationships.HAS_ROLE))
+  }
+
   implicit object RoleFormat extends Format[Role] {
 
     def reads(json: JsValue): Role = Role(

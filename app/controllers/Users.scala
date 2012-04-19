@@ -7,6 +7,7 @@ import play.api.data.Forms._
 
 import views._
 import models._
+
 /**
  * ndidialaneme
  */
@@ -29,21 +30,20 @@ object Users extends Controller {
     Redirect("/admin/users")
   }
 
-  def roles(id: Long) = TODO //Action {
- //   Ok(html.users.roles("Add Roles", User.getUserById(id), User.getAllButCurrentRoles(id), newRoleForm))
-  //}
+  def roles(id: Long) = Action {
+    Ok(html.users.roles("Add Roles", User.getUserById(id), Role.getAllButCurrentRolesForUser(id), newRoleForm))
+  }
+
+  def rolesSubmit(id: Long) = Action { implicit request =>
+    newRoleForm.bindFromRequest.fold(
+      errors => BadRequest("Whoops"),
+      role => Ok(html.users.detail(User.getUserById(id).addRole(role)))
+    )
+  }
 
   def detail(id: Long)= Action{
     Ok(html.users.detail(User.getUserById(id)))
   }
-
-//  def detail(id: Long)= Action{
-//    User.getUserById(id).map( u =>
-//      Ok(views.html.users.detail(u))
-//    ).getOrElse(NotFound)
-//  }
-
-  def delete(id: Long) = TODO
 
   def supervisor(id: Long) = Action {
     Ok(html.users.supervise("Add Supervisee", User.getUserById(id), User.getAllUsersButThisUserAndSuperviseRelationships(id), newByIdForm))
@@ -88,6 +88,5 @@ object Users extends Controller {
       (role) => Some(role.id)
     }
   )
-
 
 }

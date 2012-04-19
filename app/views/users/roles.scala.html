@@ -11,4 +11,23 @@
 @main(title)(controls){
     <h3>@title</h3>
 
+    Select one of the following Roles to set a new role for @user.name:
+    @helper.form(action = routes.Users.rolesSubmit(user.id)) {
+        <fieldset>
+            @inputRadioGroup(
+                roleForm("id"),
+                options(
+                    roles map { role => (role.id.toString.asInstanceOf[String] , role.name)} toMap
+                ),
+                '_label -> None,
+                '_error -> roleForm.globalError,
+                '_showConstraints -> false
+            )
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Link">
+            <a href="@routes.Users.roles(user.id)" class="btn">Cancel</a>
+        </div>
+    }
 }

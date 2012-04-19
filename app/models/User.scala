@@ -16,27 +16,25 @@ case class User(id: Long, name: String) extends Model[User]{
   }
 
   def addSupervisee(supervisee: User): User = {
-    graph.createRelationship(this, User.SUPERVISES, supervisee)
+    graph.createRelationship(this, Relationships.SUPERVISES, supervisee)
+    this
+  }
+
+  def addRole(role: Role): User = {
+    graph.createRelationship(this, Relationships.HAS_ROLE, role)
     this
   }
 }
 
 object User {
 
-  val SUPERVISES = "SUPERVISES"
-
   def getUserById(id: Long) = Model.one[User](id)
 
   def getAllUsers (implicit m:ClassManifest[User], f:Format[User])= graph.relationTargets(CypherQueries.match1(graph.root, Model.kindOf[User]))
 
   def getAllUsersButThisUserAndSuperviseRelationships (id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
-    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
+    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], Relationships.SUPERVISES))
   }
-
-  //def getAllButCurrentRoles(id: Long)(implicit m:ClassManifest[User], f:Format[User])= {
-   // graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Model.kindOf[User], SUPERVISES))
-  //}
-
 
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue): User = User(

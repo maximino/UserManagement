@@ -4,8 +4,8 @@
 @import helper.twitterBootstrap._
 
 @controls = {
-<a href="/admin/users">Users</a>
-<a href="/admin/roles">Roles</a>
+    <a href="/admin/users">Users</a>
+    <a href="/admin/roles">Roles</a>
 }
 
 @main(title)(controls){
@@ -22,7 +22,6 @@
                 '_label -> None,
                 '_error -> userForm.globalError,
                 '_showConstraints -> false
-
             )
         </fieldset>
 

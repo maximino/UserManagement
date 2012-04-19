@@ -14,6 +14,7 @@ POST    /admin/users/newUser                                controllers.Users.su
 GET     /admin/users/:id                                    controllers.Users.detail(id: Long)
 
 GET     /admin/users/:id/addRole                            controllers.Users.roles(id: Long)
+POST    /admin/users/:id/addRole                            controllers.Users.rolesSubmit(id: Long)
 
 GET     /admin/users/:id/supervisees                        controllers.Users.supervisor(id: Long)
 POST    /admin/users/:id/supervisees                        controllers.Users.superviseSubmit(id: Long)
