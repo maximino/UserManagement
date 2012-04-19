@@ -48,7 +48,10 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   }
 
   override lazy val root: Model[_] = Http(neoRestBase <:< Map("Accept" -> "application/json") >! {
-    jsValue => new Model() { val id:Long = selfRestUriToId((jsValue \ "reference_node").as[String])}
+    jsValue => new Model() {
+      val id:Long = selfRestUriToId((jsValue \ "reference_node").as[String])
+      val name:String = null.asInstanceOf[String]
+    }
   })
 
   def getNode[T <: Model[_]](id: Long)(implicit m: ClassManifest[T], f: Format[T]): Option[T] = {
