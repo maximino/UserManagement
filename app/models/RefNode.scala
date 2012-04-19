@@ -16,6 +16,10 @@ case class RefNode(id: Long, name: String) extends Model[RefNode]{
 
 object RefNode{
 
+  def getAllRefNodes(implicit f:Format[RefNode]) = {
+    graph.relationTargets(CypherQueries.match1(graph.root, Relationships.REF_NODE))
+  }
+
   def userRefNode(implicit f:Format[RefNode]) = {
     val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "USERS_REFERENCE"))
     list(1)
