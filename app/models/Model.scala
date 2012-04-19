@@ -12,7 +12,9 @@ abstract class Model[A <: Model[A]] {
   val id:Long
   val name: String
 
-  def save(implicit f:Format[A]):A = graph.saveNode[A](this.asInstanceOf[A])
+  def save(savedNode: A, relationship: String, refNode: Model[_])(implicit f:Format[A]): A = {
+    graph.saveNodeAndCreateRelationship(savedNode, relationship, refNode)
+  }
 }
 
 object Model {

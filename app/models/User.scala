@@ -10,8 +10,8 @@ import play.api.libs.json._
 
 case class User(id: Long, name: String) extends Model[User]{
 
-  override def save(implicit f:Format[User]):User = {
-    super.save
+  def save[T <: Model[_]](implicit f:Format[User]):User = {
+    super.save(this, Relationships.USER, User.REF_NODE)
   }
 
   def addSupervisee(supervisee: User): User = {
@@ -26,6 +26,8 @@ case class User(id: Long, name: String) extends Model[User]{
 }
 
 object User {
+
+  val REF_NODE: RefNode = null
 
   def getUserById(id: Long)(implicit f:Format[User])= Model.one[User](id)
 
@@ -44,7 +46,6 @@ object User {
 
     def writes(u: User): JsValue =
     JsObject(List(
-    "_class_" -> JsString(User.getClass.getName),
     "name" -> JsString(u.name)
     ) ::: (if (u.id != null.asInstanceOf[Long]) {
         List("id" -> JsNumber(u.id))

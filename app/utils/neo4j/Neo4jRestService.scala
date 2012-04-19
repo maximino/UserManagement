@@ -63,7 +63,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     }
   }
 
-  def saveNode[T <: Model[_]](t: T)(implicit f: Format[T]): T = {
+  def saveNodeAndCreateRelationship[T <: Model[_]](t: T, relationship: String, refNode: Model[_])(implicit f: Format[T]): T = {
 
     val (id: Long, property: String) = Http(
       (neoRestNode <<(stringify(toJson(t)), "application/json"))
@@ -83,9 +83,9 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 
     val model = getNode[T](id).get
 
-    //create the relationship for the kindOf
+    //create the relationship
     //TODO-Ndidi Incorrectly set to Relationships.USER node
-    linkToRoot(Relationships.USER, model)
+    createRelationship(refNode, relationship, model)
 
     model
   }
@@ -117,10 +117,6 @@ trait Neo4jRestService extends GraphService[Model[_]]{
         >! {
         jsValue => //((jsValue \ "self").as[String], (jsValue \ "data").as[JsObject])
       })
-  }
-
-  def linkToRoot(rel: String, end: Model[_]) {
-    createRelationship(root, rel, end)
   }
 
   def relationTargets[T <: Model[_]](cypher: String)(implicit f: Format[T]): List[T] = {
