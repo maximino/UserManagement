@@ -20,9 +20,14 @@ object RefNode{
     graph.relationTargets(CypherQueries.match1(graph.root, Relationships.REF_NODE))
   }
 
-  def userRefNode(implicit f:Format[RefNode]) = {
+  def userRefNode (implicit f:Format[RefNode]) = {
     val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "USERS_REFERENCE"))
-    list(1)
+    list(0)
+  }
+
+  def roleRefNode (implicit f:Format[RefNode]) = {
+    val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "ROLES_REFERENCE"))
+    list(0)
   }
 
   implicit object RefNodeFormat extends Format[RefNode] {

@@ -29,8 +29,7 @@ object User {
 
   def getUserById(id: Long)(implicit f:Format[User])= Model.one[User](id)
 
-  //TODO-Ndidi: Broken. Relationships.USER has a value of USER instead of users
-  def getAllUsers(implicit f:Format[User]) = graph.relationTargets(CypherQueries.match1(graph.root, Relationships.USER))
+  def getAllUsers(implicit f:Format[User]) = graph.relationTargets(CypherQueries.match1(RefNode.userRefNode, Relationships.USER))
 
   def getAllUsersButThisUserAndSuperviseRelationships (id: Long)(implicit f:Format[User])= {
     graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Relationships.USER, Relationships.SUPERVISES))

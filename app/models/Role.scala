@@ -11,16 +11,15 @@ import play.api.libs.json._
 case class Role(id: Long, name: String) extends Model[Role]{
 
   def save[T <: Model[_]](implicit f:Format[Role]):Role = {
-    super.save(this, Relationships.ROLE, Role.REF_NODE)
+    super.save(this, Relationships.ROLE, RefNode.roleRefNode)
   }
 }
 
 object Role{
-  val REF_NODE: RefNode = null
 
   def getRoleById(id: Long)(implicit f:Format[Role]) = Model.one[Role](id)
 
-  def getAllRoles(implicit f:Format[Role])= graph.relationTargets(CypherQueries.match1(graph.root, Relationships.USER))
+  def getAllRoles(implicit f:Format[Role]) = graph.relationTargets(CypherQueries.match1(RefNode.roleRefNode, Relationships.ROLE))
 
   def getAllButCurrentRolesForUser(id: Long)(implicit f:Format[Role]): List[Role]= {
     graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(graph.root, graph.getNode(id).get, Relationships.USER, Relationships.HAS_ROLE))

@@ -23,7 +23,7 @@ object CypherQueries {
     """
       START x=node({ref})
       MATCH x-[:{rel}]->t
-      WHERE t.name = "USERS_REFERENCE"
+      WHERE t.name = {name}
       RETURN t
       """
       .replaceAllLiterally("{ref}", start.id.toString)
