@@ -18,7 +18,6 @@ object CypherQueries {
     .replaceAllLiterally("{rel}", rel)
   }
 
-  //TODO: NDIDI Hard coded
   def match1WhereName1 (start: Model[_], rel: String, name: String): String = {
     """
     START x=node({ref})
@@ -29,19 +28,6 @@ object CypherQueries {
     .replaceAllLiterally("{ref}", start.id.toString)
     .replaceAllLiterally("{rel}", rel)
     .replaceAllLiterally("{name}", name)
-  }
-
-  def asdf (start: Model[_], clause: Model[_], rel: String, rel2:String): String = {
-    """
-    START x=node({ref}), y=node({ref2})
-    MATCH x-[:{rel1}]->t
-    WHERE not(y-[{rel2}]-t)
-    RETURN t
-    """
-    .replaceAllLiterally("{ref}", start.id.toString)
-    .replaceAllLiterally("{ref2}", clause.id.toString)
-    .replaceAllLiterally("{rel}", rel)
-    .replaceAllLiterally("{rel2}", rel2)
   }
 
   def start2Match1WhereNotWithOr2 (start: Model[_], clause: Model[_], rel: String, rel2:String): String = {

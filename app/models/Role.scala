@@ -19,10 +19,14 @@ object Role{
 
   def getRoleById(id: Long)(implicit f:Format[Role]) = Model.one[Role](id)
 
-  def getAllRoles(implicit f:Format[Role]) = graph.relationTargets(CypherQueries.match1(RefNode.roleRefNode, Relationships.ROLE))
+  def getAllRoles(implicit f:Format[Role]) = graph.cypherQuery(CypherQueries.match1(RefNode.roleRefNode, Relationships.ROLE))
+
+  def getAllRolesForUser(user: User)(implicit f:Format[Role]): List[Role]= {
+    graph.cypherQuery(CypherQueries.match1(user, Relationships.HAS_ROLE))
+  }
 
   def getAllButCurrentRolesForUser(id: Long)(implicit f:Format[Role]): List[Role]= {
-    graph.relationTargets(CypherQueries.start2Match1WhereNotWithOr2(RefNode.roleRefNode, graph.getNode(id).get, Relationships.ROLE, Relationships.HAS_ROLE))
+    graph.cypherQuery(CypherQueries.start2Match1WhereNotWithOr2(RefNode.roleRefNode, graph.getNode(id).get, Relationships.ROLE, Relationships.HAS_ROLE))
   }
 
   implicit object RoleFormat extends Format[Role] {

@@ -17,17 +17,17 @@ case class RefNode(id: Long, name: String) extends Model[RefNode]{
 object RefNode{
 
   def getAllRefNodes(implicit f:Format[RefNode]) = {
-    graph.relationTargets(CypherQueries.match1(graph.root, Relationships.REF_NODE))
+    graph.cypherQuery(CypherQueries.match1(graph.root, Relationships.REF_NODE))
   }
 
   //Hacky, I know.
   def userRefNode (implicit f:Format[RefNode]) = {
-    val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"USERS_REFERENCE\""))
+    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"USERS_REFERENCE\""))
     list(0)
   }
 
   def roleRefNode (implicit f:Format[RefNode]) = {
-    val list = graph.relationTargets(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"ROLES_REFERENCE\""))
+    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"ROLES_REFERENCE\""))
     list(0)
   }
 

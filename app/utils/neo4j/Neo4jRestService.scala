@@ -119,7 +119,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
       })
   }
 
-  def relationTargets[T <: Model[_]](cypher: String)(implicit f: Format[T]): List[T] = {
+  def cypherQuery[T <: Model[_]](cypher: String)(implicit f: Format[T]): List[T] = {
 
     val props = JsObject(Seq(
       "query" -> JsString(cypher),
