@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, supervisees: List[User], roles: List[Role])
 
 @controls = {
     <a href="/admin/users">Users</a>
@@ -15,10 +15,20 @@
 
     <h3>Relationships</h3>
     <h4>Supervisees</h4>
+    <ul>
+        @supervisees.map { supervisee =>
+            <li><a href="/admin/users/@supervisee.id">@supervisee.name</a></li>
+        }
+    </ul>
     <a href="/admin/users/@user.id/supervisees">Add Supervisees</a>
     <h4>Supervisors</h4>
     <hr/>
 
     <h3>Roles</h3>
+    <ul>
+        @roles.map { role =>
+           <li>@role.name</li>
+        }
+    </ul>
     <a href="/admin/users/@user.id/addRole">Add Role</a>
 }

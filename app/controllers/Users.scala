@@ -58,7 +58,7 @@ object Users extends Controller {
   }
 
   private def detailResult(user: User): Result ={
-    Ok(html.users.detail(user))
+    Ok(html.users.detail(user, User.getAllSupervisees(user), Role.getAllRolesForUser(user)))
   }
 
   val userByNameForm: Form[User] = Form(
