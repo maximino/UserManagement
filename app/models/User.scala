@@ -43,8 +43,8 @@ object User {
 
   def getAllUsers(implicit f:Format[User]) = graph.cypherQuery(CypherQueries.match1(RefNode.userRefNode, Relationships.USER))
 
-  def getAllUsersButThisUserAndSuperviseRelationships (id: Long)(implicit f:Format[User])= {
-    graph.cypherQuery(CypherQueries.start2Match1WhereNotWithOr2(RefNode.userRefNode, graph.getNode(id).get, Relationships.USER, Relationships.SUPERVISES))
+  def getAllUsersButThisUserAndSuperviseRelationships (user: User)(implicit f:Format[User])= {
+    graph.cypherQuery(CypherQueries.start2Match1WhereNotWithOr2(RefNode.userRefNode, user, Relationships.USER, Relationships.SUPERVISES))
   }
 
   implicit object UserFormat extends Format[User] {

@@ -31,7 +31,8 @@ object Users extends Controller {
   }
 
   def roles(id: Long) = Action {
-    Ok(html.users.roles("Add Roles", User.getUserById(id), Role.getAllButCurrentRolesForUser(id), newRoleForm))
+    val user = User.getUserById(id)
+    Ok(html.users.roles("Add Roles", user, Role.getAllButCurrentRolesForUser(user), newRoleForm))
   }
 
   def rolesSubmit(id: Long) = Action { implicit request =>
@@ -46,7 +47,8 @@ object Users extends Controller {
   }
 
   def supervisor(id: Long) = Action {
-    Ok(html.users.supervise("Add Supervisee", User.getUserById(id), User.getAllUsersButThisUserAndSuperviseRelationships(id), newByIdForm))
+    val user = User.getUserById(id)
+    Ok(html.users.supervise("Add Supervisee", user, User.getAllUsersButThisUserAndSuperviseRelationships(user), newByIdForm))
   }
 
   def superviseSubmit(id: Long) = Action { implicit request =>
