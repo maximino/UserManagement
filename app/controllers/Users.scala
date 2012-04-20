@@ -58,6 +58,7 @@ object Users extends Controller {
   }
 
   private def detailResult(user: User): Result ={
+    User.updateRolesFromSupervisees(user)
     Ok(html.users.detail(user, User.getAllSupervisees(user), Role.getAllRolesForUser(user)))
   }
 
@@ -74,6 +75,7 @@ object Users extends Controller {
     .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
   )
 
+  //TODO the following could be refactored
   val newByIdForm: Form[User] = Form(
     mapping(
       "id" -> longNumber

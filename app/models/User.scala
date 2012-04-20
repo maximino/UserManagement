@@ -26,7 +26,6 @@ case class User(id: Long, name: String) extends Model[User]{
   }
 
   def inheritSuperviseesRoles(supervisee: User){
-    //Needs to also inherit roles that were added to supervisees after they became supervisees.
     val superviseesRoles = Role.getAllRolesForUser(supervisee)
     val thisUserRoles = Role.getAllRolesForUser(this)
 
@@ -48,6 +47,12 @@ object User {
 
   def getAllUsersButThisUserAndSuperviseRelationships (user: User)(implicit f:Format[User])= {
     graph.cypherQuery(CypherQueries.start2Match1WhereNotWithOr2(RefNode.userRefNode, user, Relationships.USER, Relationships.SUPERVISES))
+  }
+
+  def updateRolesFromSupervisees(user: User){
+    User.getAllSupervisees(user) map { supervisee =>
+        user.inheritSuperviseesRoles(supervisee)
+    }
   }
 
   implicit object UserFormat extends Format[User] {
