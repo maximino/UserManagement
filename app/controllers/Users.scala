@@ -25,9 +25,8 @@ object Users extends Controller {
   def submit = Action { implicit request =>
     userByNameForm.bindFromRequest.fold(
       errors => BadRequest(html.users.create(errors)),
-      (user:User)=> Ok(toJson(user.save))
+      (user:User)=> detailResult(user.save)
     )
-    Redirect("/admin/users")
   }
 
   def roles(id: Long) = Action {
@@ -38,12 +37,12 @@ object Users extends Controller {
   def rolesSubmit(id: Long) = Action { implicit request =>
     newRoleForm.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
-      role => Ok(html.users.detail(User.getUserById(id).addRole(role)))
+      role => detailResult((User.getUserById(id).addRole(role)))
     )
   }
 
   def detail(id: Long)= Action{
-    Ok(html.users.detail(User.getUserById(id)))
+    detailResult(User.getUserById(id))
   }
 
   def supervisor(id: Long) = Action {
@@ -54,8 +53,12 @@ object Users extends Controller {
   def superviseSubmit(id: Long) = Action { implicit request =>
     newByIdForm.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
-      user => Ok(html.users.detail(User.getUserById(id).addSupervisee(user)))
+      user => detailResult(User.getUserById(id).addSupervisee(user))
     )
+  }
+
+  private def detailResult(user: User): Result ={
+    Ok(html.users.detail(user))
   }
 
   val userByNameForm: Form[User] = Form(
