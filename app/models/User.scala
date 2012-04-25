@@ -45,11 +45,18 @@ object User {
 
   def getAllSupervisees(user: User)(implicit f:Format[User])=graph.cypherQuery(CypherQueries.match1(user, Relationships.SUPERVISES))
 
+  def makeUserASupervisor(user: User)(implicit f:Format[User]) ={
+    if(graph.cypherQuery(CypherQueries.getAllWithThisRelationship(user, Relationships.SUPERVISOR)).isEmpty){
+      graph.createRelationship(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)
+    }
+    user
+  }
+
   def getAllUsersButThisUserAndSuperviseRelationships (user: User)(implicit f:Format[User])= {
     graph.cypherQuery(CypherQueries.start2Match1WhereNotWithOr2(RefNode.userRefNode, user, Relationships.USER, Relationships.SUPERVISES))
   }
 
-  def updateRolesFromSupervisees(user: User){
+  def updateRolesFromSupervisees(user: User)(implicit f:Format[User]){
     User.getAllSupervisees(user) map { supervisee =>
         user.inheritSuperviseesRoles(supervisee)
     }
@@ -71,4 +78,9 @@ object User {
       }))
   }
 
+  //TODO Remove later
+  def usersNotSupervising(implicit f:Format[User]):List[User] = {
+    //todo dodgy cypher
+    graph.cypherQuery(CypherQueries.start1Match1WhereNotWithRelationship1(RefNode.userRefNode, Relationships.USER, Relationships.SUPERVISES))
+  }
 }

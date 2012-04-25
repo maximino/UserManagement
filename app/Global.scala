@@ -11,14 +11,13 @@ import utils.persistance.graph
 object Global extends GlobalSettings {
   override def onStart(app : Application) {
 
-    val refNodeStringWeShouldHave = List("USERS_REFERENCE", "ROLES_REFERENCE")
-    val refNodesInGraph = RefNode.getAllRefNodes
-    val refNodesInGraphStrings = refNodesInGraph map {refNode: RefNode => refNode.name}
+    val refNodesWeShouldHave = List("USER_ROOT", "SUPERVISOR_ROOT", "ROLE_ROOT")
+    val refNodesInGraph = RefNode.getAllRefNodes map {refNode: RefNode => refNode.name}
 
 
-    refNodeStringWeShouldHave map { refNodeString =>
-      if (! refNodesInGraphStrings.contains(refNodeString)){
-        RefNode(null.asInstanceOf[Long], refNodeString).save
+    refNodesWeShouldHave map { refNode =>
+      if (! refNodesInGraph.contains(refNode)){
+        RefNode(null.asInstanceOf[Long], refNode).save
       }
     }
   }

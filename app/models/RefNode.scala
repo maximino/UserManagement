@@ -21,13 +21,13 @@ object RefNode{
   }
 
   //Hacky, I know.
-  def userRefNode (implicit f:Format[RefNode]) = {
-    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"USERS_REFERENCE\""))
-    list(0)
-  }
 
-  def roleRefNode (implicit f:Format[RefNode]) = {
-    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, "\"ROLES_REFERENCE\""))
+  def userRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"USER_ROOT\"")
+  def roleRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"ROLE_ROOT\"")
+  def supervisorRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"SUPERVISOR_ROOT\"")
+
+  private def refNodeRoot(name: String)(implicit f:Format[RefNode]) = {
+    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, name))
     list(0)
   }
 

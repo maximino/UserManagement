@@ -42,4 +42,26 @@ object CypherQueries {
     .replaceAllLiterally("{rel}", rel)
     .replaceAllLiterally("{rel2}", rel2)
   }
+
+  def getAllWithThisRelationship (start: Model[_], rel: String): String = {
+    """
+    START x=node({ref})
+    MATCH x-[:{rel}]-t
+    RETURN t
+    """
+    .replaceAllLiterally("{ref}", start.id.toString)
+    .replaceAllLiterally("{rel}", rel)
+  }
+
+  def start1Match1WhereNotWithRelationship1 (start: Model[_], rel: String, rel2: String): String = {
+    """
+    START x=node({ref})
+    MATCH x-[:{rel}]-t
+    WHERE not (t-[:{rel2}]->())
+    RETURN t
+    """
+    .replaceAllLiterally("{ref}", start.id.toString)
+    .replaceAllLiterally("{rel}", rel)
+    .replaceAllLiterally("{rel2}", rel2)
+  }
 }

@@ -53,7 +53,7 @@ object Users extends Controller {
   def superviseSubmit(id: Long) = Action { implicit request =>
     newByIdForm.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
-      user => detailResult(User.getUserById(id).addSupervisee(user))
+      user => detailResult(User.makeUserASupervisor(User.getUserById(id).addSupervisee(user)))
     )
   }
 

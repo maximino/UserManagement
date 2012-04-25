@@ -7,6 +7,7 @@ package models
 object Relationships {
 
   val REF_NODE = "REF_NODE"
+  val SUPERVISOR = "SUPERVISOR"
   val USER = "USER"
   val ROLE = "ROLE"
   val SUPERVISES = "SUPERVISES"

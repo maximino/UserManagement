@@ -28,6 +28,7 @@ GET     /admin/roles/:id                                    controllers.Roles.de
 
 # Auto-generator
 GET     /admin/autoGenerate                                 stressTest.AutoGen.generate
+GET     /admin/autoGenerateRelationships                    stressTest.AutoGen.link
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                                       controllers.Assets.at(path="/public", file)

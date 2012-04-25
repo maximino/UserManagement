@@ -13,20 +13,21 @@ object AutoGen extends Controller{
 
   def generate = Action {
     generateUsers()
-    linkUsers()
-    Redirect("")
+    Redirect(controllers.routes.Application.admin())
   }
 
   def link = Action {
     linkUsers()
-    Redirect("")
+    Redirect(controllers.routes.Application.admin())
   }
 
   def generateUsers() {
-    for (line <- Source.fromFile("app/stressTest/RandomNames10.csv").getLines()){
-      User(null.asInstanceOf[Long], line).save
-    }
+    Source.fromFile("app/stressTest/RandomNames10.csv").getLines().foreach(
+      User(null.asInstanceOf[Long], _).save
+    )
   }
 
-  def linkUsers(){}
+  def linkUsers(){
+    User.usersNotSupervising.foreach(_.addSupervisee(User.usersNotSupervising.apply(0)))
+  }
 }
