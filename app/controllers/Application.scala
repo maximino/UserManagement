@@ -37,4 +37,13 @@ object Application extends Controller {
     )
   }
 
+  trait Secured {
+    private def email(request: RequestHeader) = request.session.get("email")
+
+    private def onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Application.login())
+
+    def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(email, onUnauthorized) { user =>
+      Action(request => f(user)(request))
+    }
+  }
 }

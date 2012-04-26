@@ -18,6 +18,18 @@ object CypherQueries {
     .replaceAllLiterally("{rel}", rel)
   }
 
+  def whereEmailPassword(start: Model[_], email: String, password: String): String = {
+  """
+  START x=node({ref})
+  MATCH x-->t
+  WHERE t.email = {email} and t.password = {password}
+  RETURN t
+  """
+  .replaceAllLiterally("{ref}", start.id.toString)
+  .replaceAllLiterally("{email}", email)
+  .replaceAllLiterally("{password}", password)
+  }
+
   def match1WhereName1 (start: Model[_], rel: String, name: String): String = {
     """
     START x=node({ref})

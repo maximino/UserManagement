@@ -7,11 +7,13 @@ import play.api.data.Forms._
 
 import views._
 import models._
+import controllers.Application.Secured
+
 /**
  * ndidialaneme
  */
 
-object Roles extends Controller {
+object Roles extends Controller with Secured{
 
   def index = Action {
     Ok(html.roles.index(Role.getAllRoles))

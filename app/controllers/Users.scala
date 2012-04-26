@@ -1,18 +1,18 @@
 package controllers
 
 import play.api.mvc._
-import play.api.libs.json.Json._
 import play.api.data._
 import play.api.data.Forms._
 
 import views._
 import models._
+import controllers.Application.Secured
 
 /**
  * ndidialaneme
  */
 
-object Users extends Controller {
+object Users extends Controller with Secured{
 
   def index = Action {
     Ok(html.users.index(User.getAllUsers))

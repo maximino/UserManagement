@@ -4,8 +4,9 @@
 
 # Home page
 GET     /                                                   controllers.Application.index
-
 GET     /admin                                              controllers.Application.admin
+GET     /login                                              controllers.Application.login
+POST    /login                                              controllers.Application.authenticate
 
 # Users
 GET     /admin/users                                        controllers.Users.index

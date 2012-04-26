@@ -39,8 +39,12 @@ case class User(id: Long, name: String, email: String, password: String) extends
 }
 
 object User {
-  def authenticate(email: String, password: String):Option[User] = {
-    null
+  def authenticate(email: String, password: String) = {
+    getUserByEmailAndPassword(email, password)
+  }
+
+  def getUserByEmailAndPassword(email: String, password: String): Option[User] = {
+    Some(graph.cypherQuery(CypherQueries.whereEmailPassword(RefNode.userRefNode ,email, password)).apply(0))
   }
 
   def getUserById(id: Long)(implicit f:Format[User])= Model.one[User](id)
