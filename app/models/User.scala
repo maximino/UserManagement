@@ -3,6 +3,7 @@ package models
 import utils.cypher.CypherQueries
 import utils.persistance.graph
 import play.api.libs.json._
+import models.User.UserFormat
 
 /**
  * ndidialaneme
@@ -17,6 +18,7 @@ case class User(id: Long, name: String) extends Model[User]{
   def addSupervisee(supervisee: User): User = {
     graph.createRelationship(this, Relationships.SUPERVISES, supervisee)
     inheritSuperviseesRoles(supervisee)
+    User.makeUserASupervisor(this)(UserFormat)
     this
   }
 
@@ -80,7 +82,10 @@ object User {
 
   //TODO Remove later
   def usersNotSupervising(implicit f:Format[User]):List[User] = {
-    //todo dodgy cypher
     graph.cypherQuery(CypherQueries.start1Match1WhereNotWithRelationship1(RefNode.userRefNode, Relationships.USER, Relationships.SUPERVISES))
+  }
+
+  def usersNotSupervisingExcept(user: User)(implicit f:Format[User]):List[User] = {
+    graph.cypherQuery(CypherQueries.start1Match1WhereNotWithRelationshipOrIs(RefNode.userRefNode, user, Relationships.USER, Relationships.SUPERVISES))
   }
 }

@@ -57,10 +57,23 @@ object CypherQueries {
     """
     START x=node({ref})
     MATCH x-[:{rel}]-t
-    WHERE not (t-[:{rel2}]->())
+    WHERE not (t-[:{rel2}]-())
     RETURN t
     """
     .replaceAllLiterally("{ref}", start.id.toString)
+    .replaceAllLiterally("{rel}", rel)
+    .replaceAllLiterally("{rel2}", rel2)
+  }
+
+  def start1Match1WhereNotWithRelationshipOrIs (start: Model[_], clause: Model[_], rel: String, rel2: String): String = {
+    """
+    START x=node({ref})
+    MATCH x-[:{rel}]-t
+    WHERE not (t-[:{rel2}]-() or t.id={ref2})
+    RETURN t
+    """
+    .replaceAllLiterally("{ref}", start.id.toString)
+    .replaceAllLiterally("{ref2}", clause.id.toString)
     .replaceAllLiterally("{rel}", rel)
     .replaceAllLiterally("{rel2}", rel2)
   }
