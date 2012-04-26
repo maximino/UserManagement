@@ -64,13 +64,15 @@ object Users extends Controller {
 
   val userByNameForm: Form[User] = Form(
     mapping(
-      "name" -> nonEmptyText
+      "name" -> nonEmptyText,
+      "email" -> nonEmptyText,
+      "password" -> nonEmptyText
     ){
       //Binding: Create User from mapping result
-      (name: String) => User(null.asInstanceOf[Long], name)
+      (name: String, email: String, password: String) => User(null.asInstanceOf[Long], name, email, password)
     }{
      //Unbinding:Create the mapping values from an existing User value
-      user => Some(user.name)
+      user => Some(user.name, user.email, user.password)
     }
     .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
   )

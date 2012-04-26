@@ -9,7 +9,7 @@ import models.User.UserFormat
  * ndidialaneme
  */
 
-case class User(id: Long, name: String) extends Model[User]{
+case class User(id: Long, name: String, email: String, password: String) extends Model[User]{
 
   def save[T <: Model[_]](implicit f:Format[User]):User = {
     super.save(this, Relationships.USER, RefNode.userRefNode)
@@ -40,6 +40,9 @@ case class User(id: Long, name: String) extends Model[User]{
 }
 
 object User {
+  def authenticate(email: String, password: String):Option[User] = {
+    null
+  }
 
   def getUserById(id: Long)(implicit f:Format[User])= Model.one[User](id)
 
@@ -48,7 +51,7 @@ object User {
   def getAllSupervisees(user: User)(implicit f:Format[User])=graph.cypherQuery(CypherQueries.match1(user, Relationships.SUPERVISES))
 
   def makeUserASupervisor(user: User)(implicit f:Format[User]) ={
-    if(graph.cypherQuery(CypherQueries.getAllWithThisRelationship(user, Relationships.SUPERVISOR)).isEmpty){
+    if(graph.cypherQuery(CypherQueries.start1Match1End1(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)).isEmpty){
       graph.createRelationship(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)
     }
     user
@@ -67,12 +70,16 @@ object User {
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue): User = User(
     (json \ "id").asOpt[Long].getOrElse(null.asInstanceOf[Long]),
-    (json \ "name").as[String]
+    (json \ "name").as[String],
+    (json \ "email").as[String],
+    (json \ "password").as[String]
     )
 
     def writes(u: User): JsValue =
     JsObject(List(
-    "name" -> JsString(u.name)
+    "name" -> JsString(u.name),
+    "email" -> JsString(u.email),
+    "password" -> JsString(u.password)
     ) ::: (if (u.id != null.asInstanceOf[Long]) {
         List("id" -> JsNumber(u.id))
       } else {

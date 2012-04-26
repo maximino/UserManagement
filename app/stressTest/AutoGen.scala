@@ -18,8 +18,8 @@ object AutoGen extends Controller{
   }
 
   def generateUsers() {
-    Source.fromFile("app/stressTest/RandomNames100.csv").getLines().foreach(
-      User(null.asInstanceOf[Long], _).save
+    Source.fromFile("app/stressTest/RandomNames10.csv").getLines().foreach( name =>
+      User(null.asInstanceOf[Long], name, name+"@bigfish.com", "pass").save
     )
   }
 
