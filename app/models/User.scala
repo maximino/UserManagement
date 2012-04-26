@@ -19,7 +19,6 @@ case class User(id: Long, name: String, email: String, password: String) extends
     graph.createRelationship(this, Relationships.SUPERVISES, supervisee)
     inheritSuperviseesRoles(supervisee)
     User.makeUserASupervisor(this)(UserFormat)
-    this
   }
 
   def addRole(role: Role): User = {
@@ -53,6 +52,13 @@ object User {
   def makeUserASupervisor(user: User)(implicit f:Format[User]) ={
     if(graph.cypherQuery(CypherQueries.start1Match1End1(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)).isEmpty){
       graph.createRelationship(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)
+    }
+    user
+  }
+
+  def makeUserAnAdmin(user: User)(implicit f:Format[User]) ={
+    if(graph.cypherQuery(CypherQueries.start1Match1End1(RefNode.adminRefNode, Relationships.ADMIN, user)).isEmpty){
+      graph.createRelationship(RefNode.adminRefNode, Relationships.ADMIN, user)
     }
     user
   }

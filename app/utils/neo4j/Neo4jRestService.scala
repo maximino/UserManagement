@@ -84,7 +84,6 @@ trait Neo4jRestService extends GraphService[Model[_]]{
     val model = getNode[T](id).get
 
     //create the relationship
-    //TODO-Ndidi Incorrectly set to Relationships.USER node
     createRelationship(refNode, relationship, model)
 
     model
