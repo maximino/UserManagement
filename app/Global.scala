@@ -26,11 +26,12 @@ object Global extends GlobalSettings {
       }
     }
 
-    val u = User(null.asInstanceOf[Long], "admin", "admin@bigfish.com", "admin")
-    u.save
+    createAdmin()
+  }
+
+  private def createAdmin(){
+    val u = User(null.asInstanceOf[Long], "admin", "admin@bigfish.com", "admin").save
     User.makeUserASupervisor(u)
     User.makeUserAnAdmin(u)
-
-
   }
 }
