@@ -24,7 +24,7 @@ object Users extends Controller with Secured{
 
   def submit = Action { implicit request =>
     userByNameForm.bindFromRequest.fold(
-      errors => BadRequest(html.users.create(errors)),
+      formWithErrors => BadRequest(html.users.create(formWithErrors)),
       (user:User)=> detailResult(user.save)
     )
   }
@@ -65,16 +65,18 @@ object Users extends Controller with Secured{
   val userByNameForm: Form[User] = Form(
     mapping(
       "name" -> nonEmptyText,
-      "email" -> nonEmptyText,
-      "password" -> nonEmptyText
+      "email" -> nonEmptyText.verifying("This email address is already in use!", email => !(User.getAllUsers map(_.email)).contains(email)),
+      "password" -> tuple(
+        "main" -> nonEmptyText(minLength = 6),
+        "confirm" -> nonEmptyText
+      ).verifying("Passwords don't match", passwords => passwords._1 == passwords._2)
     ){
       //Binding: Create User from mapping result
-      (name: String, email: String, password: String) => User(null.asInstanceOf[Long], name, email, password)
+      (name, email, passwords) => User(null.asInstanceOf[Long], name, email, passwords._1)
     }{
      //Unbinding:Create the mapping values from an existing User value
-      user => Some(user.name, user.email, user.password)
+      user => Some(user.name, user.email, (user.password, ""))
     }
-    .verifying("This name is not available",user => !Seq("admin", "guest").contains(user.name))
   )
 
   //TODO the following could be refactored

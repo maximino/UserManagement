@@ -55,12 +55,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
   })
 
   def getNode[T <: Model[_]](id: Long)(implicit f: Format[T]): Option[T] = {
-    try {
-      Http(neoRestNodeById(id) <:< Map("Accept" -> "application/json") >^> (Some(_: T)))
-    } catch {
-      //todo check 404
-      case x => None
-    }
+    Http(neoRestNodeById(id) <:< Map("Accept" -> "application/json") >^> (Some(_: T)))
   }
 
   def saveNodeAndCreateRelationship[T <: Model[_]](t: T, relationship: String, refNode: Model[_])(implicit f: Format[T]): T = {

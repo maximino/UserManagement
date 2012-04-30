@@ -19,13 +19,14 @@
             @inputText(
             userForm("name"),
             '_label -> "Name",
-            '_help -> "Please enter a username.",
-            '_error -> userForm.globalError
+            '_help -> "Please enter a username."
             )
 
             @inputText(
-            userForm("email"), '_label -> "Email",
-            '_help -> "Enter a valid email address."
+            userForm("email"),
+            '_label -> "Email",
+            '_help -> "Enter a valid email address.",
+            '_error -> userForm.error("email")
             )
 
             @inputPassword(
