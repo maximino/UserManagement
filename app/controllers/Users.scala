@@ -5,8 +5,9 @@ import play.api.data._
 import play.api.data.Forms._
 
 import views._
-import models._
 import controllers.Application.Secured
+import models._
+import play.api.libs.json.Format
 
 /**
  * ndidialaneme
@@ -31,11 +32,11 @@ object Users extends Controller with Secured{
 
   def roles(id: Long) = Action {
     val user = User.getUserById(id)
-    Ok(html.users.roles("Add Roles", user, Role.getAllButCurrentRolesForUser(user), newRoleForm))
+    Ok(html.users.roles("Add Roles", user, Role.getAllButCurrentRolesForUser(user), formByIdRole))
   }
 
   def rolesSubmit(id: Long) = Action { implicit request =>
-    newRoleForm.bindFromRequest.fold(
+    formByIdRole.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
       role => detailResult((User.getUserById(id).addRole(role)))
     )
@@ -47,11 +48,11 @@ object Users extends Controller with Secured{
 
   def supervisor(id: Long) = Action {
     val user = User.getUserById(id)
-    Ok(html.users.supervise("Add Supervisee", user, User.getAllUsersButThisUserAndSuperviseRelationships(user), newByIdForm))
+    Ok(html.users.supervise("Add Supervisee", user, User.getAllUsersButThisUserAndSuperviseRelationships(user), formByIdUser))
   }
 
   def superviseSubmit(id: Long) = Action { implicit request =>
-    newByIdForm.bindFromRequest.fold(
+    formByIdUser.bindFromRequest.fold(
       errors => BadRequest("Whoops"),
       user => detailResult(User.getUserById(id).addSupervisee(user))
     )
@@ -79,25 +80,16 @@ object Users extends Controller with Secured{
     }
   )
 
-  //TODO the following could be refactored
-  val newByIdForm: Form[User] = Form(
+  val formByIdUser = byId[User](User.UserFormat)
+  val formByIdRole = byId[Role](Role.RoleFormat)
+
+  private def byId[A <: Model[_]](f:Format[A]): Form[A] = Form(
     mapping(
       "id" -> longNumber
     ){
-      (id) => User.getUserById(id)
+      id => Model.one[A](id)(f)
     }{
-      (user) => Some(user.id)
+      model => Some(model.id)
     }
   )
-
-  val newRoleForm: Form[Role] = Form(
-    mapping(
-      "id" -> longNumber
-    ){
-      (id) => Model.one[Role](id)
-    }{
-      (role) => Some(role.id)
-    }
-  )
-
 }

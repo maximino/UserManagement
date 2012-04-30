@@ -18,6 +18,6 @@ abstract class Model[A <: Model[A]] {
 }
 
 object Model {
-  def one[T <: Model[_]](id:Long)(implicit m:ClassManifest[T], f:Format[T]) = graph.getNode[T](id).get
+  def one[T <: Model[_]](id:Long)(implicit f:Format[T]) = graph.getNode[T](id).get
 
 }
