@@ -1,12 +1,24 @@
 package utils.cypher
 
-import models.Model
+import models.{RefNode, Model}
+
 
 /**
  * ndidialaneme
  */
 
 object CypherQueries {
+
+  def getRole(roleName: String)= {
+    """
+    START x=node({ref})
+    MATCH x-->t
+    WHERE t.name = {roleName}
+    RETURN t
+    """
+    .replaceAllLiterally("{ref}", RefNode.roleRefNode.id.toString)
+    .replaceAllLiterally("{roleName}", roleName)
+  }
 
   def match1 (start: Model[_], rel: String): String = {
     """

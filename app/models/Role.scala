@@ -3,6 +3,7 @@ package models
 import utils.cypher.CypherQueries
 import utils.persistance.graph
 import play.api.libs.json._
+import scala.Predef._
 
 /**
  * ndidialaneme
@@ -16,8 +17,14 @@ case class Role(id: Long, name: String) extends Model[Role]{
 }
 
 object Role{
+  val admin = getRoleByName("\"ADMIN\"")(RoleFormat)
+  val supervisor = getRoleByName("\"SUPERVISOR\"")(RoleFormat)
 
-  def getRoleById(id: Long)(implicit f:Format[Role]) = Model.one[Role](id)
+  private def getRoleByName(roleName: String)(implicit f:Format[Role]) = {
+    graph.cypherQuery(CypherQueries.getRole(roleName)).apply(0)
+  }
+
+  def getRoleById(id: Long)(implicit f:Format[Role]): Role = Model.one[Role](id)
 
   def getAllRoles(implicit f:Format[Role]) = graph.cypherQuery(CypherQueries.match1(RefNode.roleRefNode, Relationships.ROLE))
 

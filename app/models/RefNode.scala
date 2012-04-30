@@ -20,16 +20,11 @@ object RefNode{
     graph.cypherQuery(CypherQueries.match1(graph.root, Relationships.REF_NODE))
   }
 
-  //Hacky, I know.
-
   def userRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"USER_ROOT\"")
   def roleRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"ROLE_ROOT\"")
-  def supervisorRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"SUPERVISOR_ROOT\"")
-  def adminRefNode(implicit f:Format[RefNode]) = refNodeRoot("\"ADMIN_ROOT\"")
 
   private def refNodeRoot(name: String)(implicit f:Format[RefNode]) = {
-    val list = graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, name))
-    list(0)
+    graph.cypherQuery(CypherQueries.match1WhereName1(graph.root, Relationships.REF_NODE, name)).apply(0)
   }
 
   implicit object RefNodeFormat extends Format[RefNode] {

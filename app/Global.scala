@@ -11,8 +11,10 @@ import utils.persistance.graph
 object Global extends GlobalSettings {
   override def onStart(app : Application) {
 
-    val refNodesWeShouldHave = List("USER_ROOT", "SUPERVISOR_ROOT", "ADMIN_ROOT","ROLE_ROOT")
-    val refNodesInGraph = RefNode.getAllRefNodes map {refNode: RefNode => refNode.name}
+    val refNodesWeShouldHave = List("USER_ROOT", "ROLE_ROOT")
+    val refNodesInGraph = RefNode.getAllRefNodes map {
+      _.name
+    }
 
     if (!refNodesWeShouldHave.sameElements(refNodesInGraph)){
       createBasicNodes(refNodesWeShouldHave, refNodesInGraph)
@@ -20,13 +22,18 @@ object Global extends GlobalSettings {
   }
 
   private def createBasicNodes(refNodesWeShouldHave: List[String], refNodesInGraph: List[String]){
-    refNodesWeShouldHave map { refNode =>
-      if (! refNodesInGraph.contains(refNode)){
-        RefNode(null.asInstanceOf[Long], refNode).save
-      }
-    }
+    //Making the assumption that if one of the nodes isn't there, none are.
+    refNodesWeShouldHave.foreach(
+      RefNode(null.asInstanceOf[Long], _).save
+    )
 
+    createBasicRoleNodes()
     createAdmin()
+  }
+
+  def createBasicRoleNodes(){
+    Role(null.asInstanceOf[Long], "SUPERVISOR").save
+    Role(null.asInstanceOf[Long], "ADMIN").save
   }
 
   private def createAdmin(){

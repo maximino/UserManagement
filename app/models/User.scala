@@ -27,6 +27,7 @@ case class User(id: Long, name: String, email: String, password: String) extends
   }
 
   def inheritSuperviseesRoles(supervisee: User){
+    //todo only works ofr immediate supervisee.. Needs to follow to top of chain
     val superviseesRoles = Role.getAllRolesForUser(supervisee)
     val thisUserRoles = Role.getAllRolesForUser(this)
 
@@ -54,15 +55,15 @@ object User {
   def getAllSupervisees(user: User)(implicit f:Format[User])=graph.cypherQuery(CypherQueries.match1(user, Relationships.SUPERVISES))
 
   def makeUserASupervisor(user: User)(implicit f:Format[User]) ={
-    if(graph.cypherQuery(CypherQueries.start1Match1End1(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)).isEmpty){
-      graph.createRelationship(RefNode.supervisorRefNode, Relationships.SUPERVISOR, user)
+    if(graph.cypherQuery(CypherQueries.start1Match1End1(Role.supervisor, Relationships.SUPERVISOR, user)).isEmpty){
+      graph.createRelationship(Role.supervisor, Relationships.SUPERVISOR, user)
     }
     user
   }
 
   def makeUserAnAdmin(user: User)(implicit f:Format[User]) ={
-    if(graph.cypherQuery(CypherQueries.start1Match1End1(RefNode.adminRefNode, Relationships.ADMIN, user)).isEmpty){
-      graph.createRelationship(RefNode.adminRefNode, Relationships.ADMIN, user)
+    if(graph.cypherQuery(CypherQueries.start1Match1End1(Role.admin, Relationships.ADMIN, user)).isEmpty){
+      graph.createRelationship(Role.admin, Relationships.ADMIN, user)
     }
     user
   }
