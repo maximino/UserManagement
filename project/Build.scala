@@ -12,16 +12,13 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
     "org.neo4j" % "neo4j" % "1.7.M01",
     "com.sun.jersey" % "jersey-client" % "1.12",
-    "net.databinder" %% "dispatch-http" % "0.8.8" withSources,
-    "be.objectify" % "deadbolt-2_2.9.1" % "1.1.3-SNAPSHOT"
+    "net.databinder" %% "dispatch-http" % "0.8.8" withSources
   )
 
   val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
     // Add your own project settings here
     resolvers ++= Seq(
-    sbtIdeaRepo,
-    Resolver.url("Objectify Play Repository", url("http://schaloner.github.com/releases/"))(Resolver.ivyStylePatterns),
-    Resolver.url("Objectify Play Repository", url("http://schaloner.github.com/snapshots/"))(Resolver.ivyStylePatterns)
+    sbtIdeaRepo
     )
   )
 }
