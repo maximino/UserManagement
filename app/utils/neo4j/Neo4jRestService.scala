@@ -35,12 +35,8 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 
   implicit def defaultResultsFilter: (JsValue) => Iterable[JsValue] = {
     jsValue: JsValue =>
-    //the first list is the global result
-    //underneath lists are composing all returnable
-    //each JsValue is then a returnable
       (jsValue \ "data").as[List[List[JsValue]]].map {
         l => {
-          //here only one returnable
           val v = l.head
           v \ "data"
         }
@@ -60,6 +56,7 @@ trait Neo4jRestService extends GraphService[Model[_]]{
 
   def saveNodeAndCreateRelationship[T <: Model[_]](t: T, relationship: String, refNode: Model[_])(implicit f: Format[T]): T = {
 
+    //create node
     val (id: Long, property: String) = Http(
       (neoRestNode <<(stringify(toJson(t)), "application/json"))
         <:< Map("Accept" -> "application/json")
