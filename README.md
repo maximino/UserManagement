@@ -1,6 +1,6 @@
 #Neo4j and Play! 2.0 with Scala
 
-This application aims to be an introduction to Neo4j and Play! 2.0 with Scala. If you think the code in this application could do with a refactor here or there, fork it, and send me a pull request! 
+This application aims to be an introduction to Neo4j and Play! 2.0 with Scala. It's likely that the code could do with optimisations and refactoring in various places; to help others wishing to learn, consider forking, editing and sending me a pull request.
 
 #Quick Start
 
@@ -14,7 +14,7 @@ This application aims to be an introduction to Neo4j and Play! 2.0 with Scala. I
 
 ###Play! & Neo4j 101
 - Start Neo4j with ``sh $NEO4J_HOME/bin/neo4j start`` (Remember to run ``sh $NEO4J_HOME/bin/neo4j stop`` when you're done!)
-- Run ``play`` from the project root. This launches the Play console. If you're passingly familiar with sbt, you should see a number of similarities between the two. Despite the visual similarities, the Play console additionally has its own set of commands which perform certain tasks in slightly different ways. Don't worry though, we'll focus on the core commands to get us up and running ASAP!
+- Run ``play`` from the project root. This launches the Play console. If you're passingly familiar with the sbt console, you should see a number of similarities between the two. Despite the visual similarities, the Play console additionally has its own set of commands which perform certain tasks in slightly different ways. Don't worry though, we'll focus on the core commands to get us up and running ASAP!
 - Once the console has loaded, enter ``run`` into the resulting window.
 - Head over to [http://localhost:7474/webadmin/](http://localhost:7474/webadmin/). There should be only one existing node. This is the root node.
 - In your browser once more, open up [http://localhost:9000/](http://localhost:9000/). If you briefly look at the Play console, you'll see a number of GET and POST requests have been sent to the Neo4j server.
@@ -29,16 +29,19 @@ This application aims to be an introduction to Neo4j and Play! 2.0 with Scala. I
 - If you haven't already, open up the ``Application`` class in the ``controllers`` package. Inspect the ``index`` method closely and you see it returns a Play-ified HTML file, ``views.index.scala.html``. In this instance, ``views`` is the package name the file is ``index.scala.html``.
 - Views can take arguments of any type. In our case, this view takes a ``String`` which will be rendered in the web page. Open ``index.scala.html``. The first line, ``@(message: String)``, is preceded by the ``@`` character. This character indicates the beginning of a Scala statement and because there'll be plenty of Scala statements in our ``scala.html`` files, you'll be seeing much more of it later on.
 
-And that's pretty much it for a basic understanding of the basic flow of the application. From here, it's a case of adding small units of reasonable complexity; the process of creating a new node for example.
+And that's pretty much it for a basic understanding of the flow of the application. From here, it's a case of adding small units of reasonable complexity; the process of creating a new node for example.
 
 Before that, try to follow the code for a GET request to ``localhost:9000/admin/users/``. Refer back to the steps above if you need to.
 
 #Slow Burn
-You've grasped a basic understanding of the application. This section builds upon certain concepts we've used, but haven't directly discussed. At certain points I'll refer you to official documentation to help you truly appreciate what is going on.
+You've now got a feel for the application. This section builds upon certain concepts we've used, but haven't directly discussed. At certain points I'll refer you to official documentation to help you truly appreciate what is going on.
 
 ##Play
 ###Actions, Controllers & Results
-In the previous section, the GET request was handled by a [``play.api.mvc.Action``](http://www.playframework.org/documentation/api/2.0.1/scala/index.html#play.api.mvc.Action). As defined by the API: 'An action is essentially a ``(play.api.mvc.Request => play.api.mvc.Result)`` function that handles a request and generates a result to be sent to the client'. If you're using this guide, it's very likely you are familiar with HTTP and have come across Request and Response messages. It is precisely these concepts we are once more dealing with here, the main difference being that ``play.api.mvc.Result`` isn't exactly the same as a HTTP Response, however it does represent it. Check out the [Actions, Controllers and Results](http://www.playframework.org/documentation/2.0.1/ScalaActions) section of the official Play documentation for more detail.
+In the previous section, the GET request was handled by a [``play.api.mvc.Action``](http://www.playframework.org/documentation/api/2.0.1/scala/index.html#play.api.mvc.Action). As defined by the API: 
+>An action is essentially a ``(play.api.mvc.Request => play.api.mvc.Result)`` function that handles a request and generates a result to be sent to the client.
+
+If you're using this guide, it's very likely you are familiar with the HTTP request/response protocol. It is precisely these concepts we are once more dealing with here, the main difference being that ``play.api.mvc.Result`` isn't exactly the same as a HTTP Response, however it does represent it. Check out the [Actions, Controllers and Results](http://www.playframework.org/documentation/2.0.1/ScalaActions) section of the official Play documentation for more detail.
 
 ###Routing
 We have lightly covered how the ``routes`` file manages HTTP routing. Read the [HTTP routing](http://www.playframework.org/documentation/2.0.1/ScalaRouting) page of the official documentation to discover some advanced routing techniques. You'll also be introduced to a concept called 'reverse routing', which simply allows you to generate a URL from within a Scala call.
@@ -47,9 +50,57 @@ We have lightly covered how the ``routes`` file manages HTTP routing. Read the [
 If you remember, the ``@`` character was used in what appeared to be a Play-ified HTML file. The correct name for this file is a Scala Template. In addition to being able to pass Scala code to this file, we can do a number of Scala-like things inside the template itself, including but not limited to pattern matching, iterating and declaring reusable values. Read more about [the template engine](http://www.playframework.org/documentation/2.0.1/ScalaTemplates) and [common use cases](http://www.playframework.org/documentation/2.0.1/ScalaTemplateUseCases) in the official documentation.
 
 ###Forms
+It goes without saying that forms are useful for capturing data from an end user. 
+The following ``play.api.data.Form`` could be used to verify potential users login information.
 
-It goes without saying that forms are useful for capturing data from an end user. You are strongly advised to read the [handling form submission](http://www.playframework.org/documentation/2.0.1/ScalaForms) section of the official documentation.
+	val loginForm = Form(
+	  tuple(
+	    "email" -> text,
+	    "password" -> text
+	  )
+	)
 
+This ``Form`` is actually used to construct the ``User`` case class defined beside it.
+
+	case class User(name: String, age: Int)
+
+	val userForm = Form(
+	  mapping(
+	    "name" -> text,
+	    "age" -> number
+	  )(User.apply)(User.unapply)
+	)
+
+From the Play documentation:
+>__Note__:  The difference between using tuple and mapping is that when you are using tuple the construction and deconstruction functions don't need to be specified (we know how to construct and deconstruct a tuple, right?).
+
+>The mapping method just let you define your custom functions. When you want to construct and deconstruct a case class, you can just use its default apply and unapply functions, as they do exactly that
+
+Here we have the ``Form`` and the ``User`` case class used in our application. The construction and deconstruction of our case class is more complex than the previous one due to
+
+1. collecting the user's password twice for verification purposes
+2. the id of the object not being collect, but generated at a later date. 
+
+<!-- -->
+
+    case class User(id: Long, name: String, email: String, password: String)
+	
+    val userByNameForm: Form[User] = Form(
+      mapping(
+        "name" -> nonEmptyText,
+        "email" -> nonEmptyText.verifying("This email address is already in use!", email => !(User.getAllUsers map(_.email)).contains(email)),
+        "password" -> tuple(
+          "main" -> nonEmptyText(minLength = 6),
+          "confirm" -> nonEmptyText
+        ).verifying("Passwords don't match", passwords => passwords._1 == passwords._2)
+      ){
+        (name, email, passwords) => User(null.asInstanceOf[Long], name, email, passwords._1)
+      }{
+        user => Some(user.name, user.email, (user.password, ""))
+      }
+    )
+
+You are strongly advised to read the [handling form submission](http://www.playframework.org/documentation/2.0.1/ScalaForms) section of the official documentation.
 For examples look in the official Play! [samples](https://github.com/playframework/Play20/tree/master/samples).
 
 ##Neo4J

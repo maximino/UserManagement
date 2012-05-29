@@ -20,7 +20,7 @@ object Users extends Controller with Secured{
   }
 
   def create = Action {
-    Ok(html.users.create(userByNameForm));
+    Ok(html.users.create(userByNameForm))
   }
 
   def submit = Action { implicit request =>
